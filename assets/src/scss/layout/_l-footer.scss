@@ -1,0 +1,32 @@
+$layout-name: l-footer;
+
+.#{$layout-name} {
+	@include container;
+	background-color: #000;
+	color: var(--text-color-2);
+	margin-top: $global-module-size * 2;
+	&__content {
+		@include content;
+		align-items: center;
+		flex-direction: column;
+		gap: $global-module-size / 2;
+		justify-content: center;
+		padding: $global-module-size 0;
+
+		@include breakpoint(600) {
+			flex-direction: row;
+			justify-content: space-around;
+			margin: 0 auto;
+			max-width: rem(500);
+		}
+	}
+
+	& svg {
+		fill: #fff;
+		max-width: rem(200);
+	}
+
+	&__copy {
+		text-align: left;
+	}
+}

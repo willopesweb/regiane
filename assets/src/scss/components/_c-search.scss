@@ -1,0 +1,13 @@
+$component-name: c-search;
+
+.#{$component-name} {
+	display: flex;
+	&__input {
+		@include one-input;
+	}
+
+	&__button {
+		&::before {
+		}
+	}
+}

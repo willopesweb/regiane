@@ -1,0 +1,54 @@
+$layout-name: l-banner;
+
+.#{$layout-name} {
+	@include content;
+	&__header {
+		display: flex;
+		margin: 0 auto;
+		max-width: rem(690);
+	}
+
+	&__image {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: rem(20) rem(10);
+		position: relative;
+		text-align: center;
+		width: 100%;
+		z-index: -1;
+
+		@include breakpoint(600) {
+			padding: rem(40);
+		}
+
+		@include breakpoint(801) {
+			padding: rem(80);
+		}
+	}
+
+	&__title {
+		color: #fff;
+		font-size: rem(18);
+		font-weight: bold;
+		@include breakpoint(600) {
+			font-size: rem(24);
+		}
+		@include breakpoint(801) {
+			font-size: rem(30);
+		}
+	}
+
+	&__quote {
+		color: #fff;
+		font-size: rem(14);
+		font-weight: normal;
+		padding-left: rem(10);
+		@include breakpoint(600) {
+			font-size: rem(20);
+		}
+		@include breakpoint(801) {
+			font-size: rem(24);
+		}
+	}
+}

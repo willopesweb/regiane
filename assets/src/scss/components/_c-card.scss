@@ -1,0 +1,44 @@
+$component-name: c-card;
+
+.#{$component-name} {
+	background-color: var(--theme-color-4);
+	padding: $global-module-size * 3 rem(30) rem(30);
+	position: relative;
+
+	&__icon {
+		background-color: var(--theme-color-1);
+		color: var(--text-color-2);
+		display: block;
+		height: rem(80);
+		left: 0;
+		position: absolute;
+		top: -40px;
+		width: rem(80);
+	}
+
+	&__title {
+		font-size: rem(25);
+		font-weight: bold;
+		margin-bottom: $global-module-size / 2;
+	}
+
+	&__text {
+		color: rgba(0, 0, 0, 0.7);
+		font-size: rem(16);
+		line-height: rem(24);
+		margin-bottom: $global-module-size;
+	}
+
+	&__link {
+		color: var(--theme-color-1);
+		display: block;
+		font-size: rem(14);
+		font-weight: bold;
+		transition: 300ms ease all;
+
+		&:hover {
+			color: var(--theme-color-3);
+			transform: translateY(-3px);
+		}
+	}
+}

@@ -1,0 +1,90 @@
+$layout-name: c-post;
+
+.#{$layout-name} {
+	align-items: center;
+
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 100%;
+
+	&__image {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		box-shadow: 3px 0 6px rgba(0, 0, 0, 0.15);
+		min-height: rem(400);
+		width: 100%;
+	}
+
+	&__header {
+		align-items: center;
+		background-color: #fff;
+		border: 1px solid var(--text-color-1);
+		color: var(--text-color-1);
+		display: flex;
+		height: rem(150);
+		justify-content: center;
+		left: 0;
+		margin: rem(-75) auto 0 auto;
+		padding: 0 rem(10);
+		transition: 0.15s linear;
+		width: 90%;
+		&:hover {
+			border-color: darken($theme-color-1, 10%);
+			color: darken($theme-color-1, 10%);
+		}
+	}
+
+	&__title {
+		color: inherit;
+		font-size: rem(24);
+		font-weight: 500;
+		z-index: 1;
+
+		@include breakpoint(801) {
+			font-size: rem(30);
+		}
+
+
+	}
+
+	&__quote {
+		color: #fff;
+		font-size: rem(14);
+		font-weight: normal;
+		padding-left: rem(10);
+
+		@include breakpoint(600) {
+			font-size: rem(20);
+		}
+
+		@include breakpoint(801) {
+			font-size: rem(24);
+		}
+	}
+
+	&__content {
+		align-items: center;
+		background-color: $theme-color-3;
+		border-radius: 0 0 rem(5) rem(5);
+		box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+		display: flex;
+		flex-direction: column;
+		gap: $global-module-size;
+		padding: $global-module-size;
+
+		@include breakpoint(450) {
+			padding: $global-module-size $global-module-size * 3;
+		}
+
+		& .c-button {
+			align-self: flex-end;
+		}
+	}
+
+	&__excerpt {
+		font-size: rem(14);
+		line-height: rem(22);
+	}
+}

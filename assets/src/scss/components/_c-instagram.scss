@@ -1,0 +1,45 @@
+$component-name: c-instagram;
+
+.#{$component-name} {
+	align-items: center;
+	border-top: 2px solid var(--theme-color-2);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: $global-module-size * 2 0;
+
+	&__name {
+		align-items: center;
+		align-self: flex-start;
+		display: flex;
+		font-size: rem(14);
+
+		&::before {
+			font-size: rem(25);
+		}
+	}
+
+	&__feed {
+		align-items: center;
+		display: flex;
+		flex-basis: 100%;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+
+		#sb_instagram {
+
+			& #sbi_load,
+			& .sb_instagram_header {
+				display: none;
+			}
+		}
+
+		.c-button {
+			font-size: rem(12);
+			margin-top: -20px;
+		}
+	}
+
+
+}

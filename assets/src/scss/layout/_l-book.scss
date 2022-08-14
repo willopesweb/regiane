@@ -1,0 +1,48 @@
+$layout-name: l-book;
+
+.#{$layout-name} {
+	display: grid;
+	grid-template-rows: auto auto;
+	margin-bottom: $global-module-size * 3;
+
+	@include breakpoint(900) {
+		grid-gap: $global-module-size * 2;
+		grid-template-columns: 30% calc(70% - 2.5rem);
+		grid-template-rows: auto;
+		place-items: center;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__image {
+		margin: $global-module-size * 2 auto;
+
+		@include breakpoint(900) {
+			margin: 0;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
+	&__title {
+		font-size: rem(24);
+		margin-bottom: $global-module-size;
+		text-align: center;
+		@include breakpoint(900) {
+			text-align: left;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		gap: $global-module-size;
+	}
+
+	& .c-button {
+		margin-top: $global-module-size;
+		text-align: center;
+	}
+}

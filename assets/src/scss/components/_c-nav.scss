@@ -1,0 +1,257 @@
+$component-name: c-nav;
+
+$splash-screen-color: $theme-color-1;
+$screen-width: 320px;
+$screen-height: 560px;
+
+// calculate a circle's circumference based on radius
+@function circumference($r) {
+	$pi: 3.141592653;
+	@return 2 * $pi * $r;
+}
+
+.#{$component-name} {
+	--menu-item-color: var(--main-text-color);
+	--desktop-menu-item-hover: var(--theme-color-1);
+
+	& .menu-item a {
+		color: var(--menu-item-color);
+		font-size: rem(18);
+		letter-spacing: 3px;
+		padding: 1rem;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	&__toggle {
+		// Mobile Menu Button
+		background-color: $theme-color-1;
+		border: 0;
+		border-radius: 50%;
+		cursor: pointer;
+		display: inline-block;
+		outline: 0;
+		padding: 0;
+		position: absolute;
+		transition: background-color 0.15s linear;
+		z-index: 10;
+
+		&:hover,
+		&:focus {
+			background-color: darken($theme-color-1, 10%); //rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	// Mobile Menu - Splash Anim
+
+	@media (max-width: 400px) {
+
+		&__toggle {
+			right: 10px !important;
+			top: 10px !important;
+		}
+	}
+
+	@media (max-width: 800px) {
+		display: grid;
+		height: 100%;
+		place-items: center;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+
+		// Toggle Button
+		&__toggle {
+			right: 15px;
+			top: 15px;
+		}
+
+		// ---------------------------
+		// SVG Menu Icon
+		// ---------------------------
+
+		.menuicon {
+			color: white;
+			cursor: pointer;
+			display: block;
+
+			transform: rotate(0deg);
+			transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+			&__bar,
+			&__circle {
+				fill: none;
+				stroke: currentcolor;
+				stroke-linecap: round;
+				stroke-width: 3;
+			}
+
+			&__bar {
+				transform: rotate(0deg);
+				transform-origin: 50% 50%;
+				transition: transform 0.25s ease-in-out;
+			}
+
+			&__circle {
+				stroke-dasharray: circumference(23);
+				stroke-dashoffset: circumference(23); // 23 is the <circle>'s radius
+				transition: stroke-dashoffset 0.3s linear 0.1s;
+			}
+		}
+
+		// ---------------------------
+		// Circular Splash Background
+		// ---------------------------
+
+		.splash {
+			height: 1px;
+			position: absolute;
+			right: 40px;
+			top: 40px;
+			width: 1px;
+			z-index: z-index("mobile-menu");
+
+			&::after {
+				background-color: $theme-color-1;
+				border-radius: 50%;
+				content: "";
+				display: block;
+
+				// screen diameter can be 142vmax at most,
+				// circle needs to be twice that size to cover it
+				height: 284vmax;
+				left: -142vmax;
+				position: absolute;
+				top: -142vmax;
+				transform: scale(0);
+
+				transform-origin: 50% 50%;
+				transition: transform 0.5s cubic-bezier(0.755, 0.05, 0.855, 0.06);
+				width: 284vmax;
+				// will-change tells the browser we plan to
+				// animate this property in the near future
+				will-change: transform;
+			}
+		}
+
+		&__menu {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: center;
+			position: relative;
+			visibility: hidden;
+			z-index: 5;
+
+			& .menu-item {
+				opacity: 0;
+				transition: all 0.3s cubic-bezier(0, 0.995, 0.99, 1) 0.3s;
+			}
+
+			@for $i from 1 through 5 {
+				& .menu-item:nth-child(#{$i}) {
+					transform: translateY(-40px * $i);
+				}
+			}
+		}
+
+		& .menu-item a {
+			display: block;
+			font-size: rem(20);
+
+			&:hover,
+			&:focus {
+				background-color: rgba(0, 0, 0, 0.2);
+				outline: 0;
+				transition: 0.15s linear;
+			}
+		}
+
+		// ---------------------------
+		// Active State
+		// ---------------------------
+
+		&:target,
+		&--open {
+
+			//scale the background circle to full size
+			>.splash::after {
+				transform: scale(1);
+			}
+
+			//animate the menu icon
+			.menuicon {
+				color: white;
+				transform: rotate(180deg);
+
+				&__circle {
+					stroke-dashoffset: 0;
+				}
+
+				&__bar:nth-child(1),
+				&__bar:nth-child(4) {
+					opacity: 0;
+				}
+
+				&__bar:nth-child(2) {
+					transform: rotate(45deg);
+				}
+
+				&__bar:nth-child(3) {
+					transform: rotate(-45deg);
+				}
+			}
+
+			//show the nav items
+			.#{$component-name} {
+				&__menu {
+					visibility: visible;
+
+					& .menu-item {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+			}
+		}
+	}
+
+	// Desktop Menu
+	@media (min-width: 801px) {
+		&__toggle {
+			display: none;
+		}
+
+		&__menu {
+			align-items: center;
+			border-bottom: 2px solid;
+			border-color: var(--menu-item-color);
+			border-top: 2px solid;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			& .menu-item {
+				padding: rem(10);
+
+				& a {
+					color: var(--main-text-color);
+					padding: rem(10) rem(20);
+					transition: 0.15s linear;
+
+					&:hover,
+					&:focus {
+						background-color: var(--desktop-menu-item-hover);
+					}
+				}
+
+				&.current-menu-item a {
+					background-color: var(--desktop-menu-item-hover);
+				}
+			}
+		}
+	}
+}

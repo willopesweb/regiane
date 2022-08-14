@@ -1,0 +1,233 @@
+$layout-name: l-page-single;
+
+.#{$layout-name} {
+	@include container;
+
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin: 0 auto $global-module-size;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__title {
+		font-size: rem(32);
+		line-height: rem(42);
+	}
+
+	&__subtitle {
+		font-size: rem(14);
+		margin-top: rem(10);
+	}
+
+	&__content {
+		display: flex;
+		flex: 0 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		font-size: rem(18);
+		line-height: rem(26);
+		margin: 0 5%;
+		max-width: 90%;
+
+		@include breakpoint(600) {
+			margin: 0 10%;
+			max-width: 80%;
+		}
+
+		@include breakpoint(1500) {
+			margin: 0 auto;
+			max-width: $global-max-width;
+		}
+	}
+
+	&__post-content {
+		p {
+			display: block;
+			font-size: rem(20);
+			line-height: 2rem;
+			margin-bottom: 1.8rem;
+			width: 100%;
+
+			img {
+				display: block;
+				margin: 0 auto;
+				max-height: rem(400);
+				max-width: 100%;
+				object-fit: contain;
+			}
+		}
+
+		a:not(.c-button):not(.page-numbers):not([class^="icon"]) {
+			color: var(--theme-color-6);
+			transition: 0.15s linear;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		& .wp-block-image {
+			display: block;
+			margin-bottom: $global-module-size * 2;
+			text-align: center;
+			width: 100%;
+
+			figcaption {
+				font-size: rem(14);
+			}
+		}
+
+		.wp-block-embed {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			margin: $global-module-size * 2 auto;
+			width: 100%;
+
+			&__wrapper {
+				height: 0;
+				max-width: rem(900);
+				padding-bottom: 56.25%;
+				position: relative;
+				width: 100%;
+
+				iframe {
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
+
+			figcaption {
+				margin-top: rem(10);
+			}
+		}
+
+		.wp-block-quote {
+			border-left: 0.25em solid;
+			margin: 0 0 1.75em;
+			overflow-wrap: break-word;
+			padding-left: 1em;
+			position: relative;
+		}
+	}
+
+	&__share {
+		flex-basis: 100%;
+		margin: $global-module-size * 4 0 $global-module-size * 2 0;
+
+		&__title {
+			font-size: rem(16);
+			font-weight: normal;
+			margin: rem(10) 0;
+		}
+
+		& .c-social {
+			margin-left: rem(-10px);
+		}
+
+		&::after,
+		&::before {
+			background-color: var(--theme-color-1);
+			content: "";
+			display: block;
+			height: rem(2);
+			width: rem(140);
+		}
+
+		&::after {
+			margin-top: $global-module-size;
+		}
+
+		&::before {
+			margin-bottom: $global-module-size;
+		}
+	}
+
+	&__author {
+		display: flex;
+		flex-basis: 100%;
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin: $global-module-size * 2 0;
+
+		&__title {
+			flex-basis: 100%;
+			font-size: rem(16);
+			font-weight: normal;
+			margin-bottom: rem(10);
+		}
+
+		&__content {
+			display: grid;
+			font-size: rem(16);
+			grid-gap: rem(10);
+			grid-template-columns: rem(80) calc(100% - 80px);
+			place-items: center;
+		}
+
+		&__image {
+			border-radius: 50%;
+			flex-basis: rem(100);
+			height: rem(80);
+			margin: 0 $global-module-size 0 0;
+			object-fit: cover;
+			padding: 0;
+			width: rem(80);
+		}
+	}
+
+	&__instagram {
+
+		@include content("grid");
+		padding-top: $global-module-size * 2;
+		place-items: center;
+
+		@include breakpoint(700) {
+			grid-template-areas:
+				"space name"
+				"text feed";
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: rem(50) auto;
+			place-items: initial;
+		}
+
+		&__text {
+			font-size: rem(20);
+			margin-bottom: $global-module-size;
+			text-align: center;
+			@include breakpoint(700) {
+				grid-area: text;
+				margin-top: rem(10);
+				text-align: left;
+			}
+		}
+
+		.c-instagram__feed {
+			@include breakpoint(700) {
+				grid-area: feed;
+			}
+		}
+
+		&__name {
+			align-items: center;
+			display: flex;
+			font-size: rem(14);
+			&::before {
+				font-size: rem(25);
+			}
+
+			@include breakpoint(700) {
+				grid-area: name;
+				margin-left: rem(10);
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+$component-name: c-one-input;
+
+@mixin one-input {
+	background-color: $theme-color-4;
+	border: none;
+	border-radius: 0;
+	&::placeholder {
+		color: $text-color-3;
+		font-family: Montserrat, sans-serif;
+		text-transform: uppercase;
+	}
+
+	&:focus,
+	&:active {
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		outline: 2px solid darken($theme-color-4, 15%);
+	}
+
+	&:focus + button,
+	&:active + button {
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
+		outline: 2px solid darken($theme-color-4, 15%);
+	}
+
+	& + button {
+		@include c-button;
+		background-color: $theme-color-1;
+		color: $text-color-1;
+		padding: rem(10);
+		text-transform: uppercase;
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: darken($theme-color-1, 10%);
+		}
+	}
+}
+
+/* input.#{$component-name} {
+  @include one-input;
+} */

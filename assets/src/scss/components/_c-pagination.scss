@@ -1,0 +1,70 @@
+$component-name: c-pagination;
+
+.#{$component-name} {
+	--pagination-color: var(--main-text-color);
+	align-items: center;
+	display: inline-flex;
+	gap: rem(5);
+	justify-content: center;
+	width: 100%;
+
+	.page-numbers {
+		background-color: inherit;
+		border: 1px solid;
+		border-color: var(--pagination-color);
+		color: var(--pagination-color);
+		padding: rem(7) rem(14);
+		transition: 0.15s linear;
+		&:not(.current):hover,
+		&:not(.current):focus,
+		&:not(.current):active {
+			border: 1px solid darken($theme-color-1, 10%);
+			color: darken($theme-color-1, 10%);
+			outline: none;
+			&::before,
+			&::after {
+				border-color: darken($theme-color-1, 10%);
+			}
+		}
+
+		&.current {
+			background-color: var(--theme-color-4);
+			border-color: var(--theme-color-6);
+			color: var(--theme-color-6);
+		}
+
+		&.prev,
+		&.next {
+			align-items: center;
+			display: flex;
+			justify-self: flex-start;
+			&::after,
+			&::before {
+				border-color: var(--pagination-color);
+				//outline:1px solid red;
+				border-style: solid;
+				border-width: 0 1px 1px 0;
+				display: inline-flex;
+				height: rem(10);
+				transition: 0.15s linear;
+				width: rem(10);
+			}
+		}
+
+		&.prev {
+			&::before {
+				content: "";
+				margin-right: rem(10);
+				transform: rotate(135deg);
+			}
+		}
+
+		&.next {
+			&::after {
+				content: "";
+				margin-left: rem(10);
+				transform: rotate(-45deg);
+			}
+		}
+	}
+}

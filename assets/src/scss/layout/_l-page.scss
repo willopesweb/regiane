@@ -1,0 +1,27 @@
+$layout-name: l-page;
+
+.#{$layout-name} {
+	&__content {
+		@include content;
+	}
+
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-bottom: $global-module-size * 2;
+		margin-top: $global-module-size;
+		width: 100%;
+
+		@include breakpoint(801) {
+			align-items: flex-start;
+			margin-top: 0;
+		}
+	}
+
+	&__title {
+		font-size: rem(24);
+		text-transform: uppercase;
+	}
+}

@@ -1,0 +1,67 @@
+$layout-name: l-sidebar;
+
+.#{$layout-name} {
+	margin-top: $global-module-size * 2;
+
+	@include breakpoint(800) {
+		border-left: 2px solid var(--theme-color-2);
+		padding-left: $global-module-size;
+		padding-right: $global-module-size;
+	}
+
+	&__title {
+		font-size: rem(18);
+		font-weight: 500;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__book {
+		border-bottom: 2px solid var(--theme-color-2);
+		padding: $global-module-size * 2 0;
+	}
+
+	&__cover {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: $global-module-size;
+	}
+
+	&__about {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		padding: $global-module-size * 2 0;
+	}
+
+	&__biography {
+		max-width: rem(500);
+		& p {
+			font-size: rem(14);
+			line-height: rem(22);
+			&:not(:last-child) {
+				text-indent: rem(20);
+			}
+		}
+	}
+
+	&__avatar {
+		border-radius: 50%;
+		height: rem(140);
+		margin-bottom: $global-module-size / 2;
+		object-fit: cover;
+		width: rem(150);
+	}
+
+	.c-instagram__name {
+		margin-left: rem(12);
+		margin-top: $global-module-size;
+	}
+
+	& .c-newsletter {
+		border-bottom: 0;
+		margin-top: 0;
+		padding-top: $global-module-size * 2;
+	}
+}

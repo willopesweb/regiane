@@ -1,0 +1,87 @@
+$component-name: c-form;
+
+.#{$component-name},
+.wpcf7-form {
+	// Plugin Contact Form 7
+	& label {
+		display: block;
+		font-size: rem(14);
+		margin-bottom: rem(5);
+	}
+
+	& textarea,
+	& input:not([type="submit"]) {
+		background-color: var(--theme-color-4);
+		border: none;
+		border-radius: 0;
+		margin-bottom: rem(10);
+
+		&::placeholder {
+			color: $text-color-3;
+			font-family: Montserrat, sans-serif;
+			text-transform: uppercase;
+		}
+
+		&:focus,
+		&:active {
+			border: none;
+			border-radius: 0;
+			box-shadow: none;
+			outline: 2px solid darken($theme-color-4, 15%);
+		}
+	}
+
+	& input[type="submit"] {
+		@include c-button;
+		@include c-button--outline;
+	}
+}
+
+// Plugin Contact Form 7
+// Comentar caso não esteja usando o plugin
+.wpcf7 {
+	& .wpcf7-form {
+		width: 100%;
+		& .wpcf7-form-control-wrap {
+			& .input {
+				margin-top: rem(5);
+			}
+		}
+
+		& .wpcf7-response-output {
+			border-color: var(--theme-color-1) !important;
+			margin: 0 !important;
+		}
+
+		& label {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			& input:not([type="submit"]),
+			& textarea {
+				margin-bottom: 0;
+				margin-top: rem(5);
+			}
+
+			& .wpcf7-not-valid-tip {
+				font-size: rem(12);
+				font-weight: bold;
+			}
+		}
+
+		& p {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: $global-module-size;
+			width: 100%;
+		}
+		& .wpcf7-submit {
+			max-width: rem(100);
+		}
+
+		& .ajax-loader {
+			background-color: var(--theme-color-1);
+		}
+	}
+}

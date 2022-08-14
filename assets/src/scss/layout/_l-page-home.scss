@@ -1,0 +1,96 @@
+$layout-name: l-page-home;
+
+.#{$layout-name} {
+	&__content {
+		@include content("grid");
+		grid-gap: $global-module-size * 2;
+		grid-template-columns: 100%;
+
+		@include breakpoint(800) {
+			grid-gap: $global-module-size;
+			grid-template-columns: 70% 30%;
+		}
+
+	}
+
+	&__slide {
+		display: none;
+
+		@include breakpoint(640) {
+			@include content;
+			margin: 0 calc(5% - #{$global-module-size / 2});
+			max-width: calc(90% + #{$global-module-size});
+			padding-bottom: $global-module-size * 2;
+
+			.splide__arrows {
+				display: none;
+			}
+
+			.splide__pagination {
+				align-items: center;
+				display: flex;
+				justify-content: center;
+				padding-top: $global-module-size;
+
+				&__page {
+					outline: 1px solid var(--theme-color-2);
+
+					&.is-active {
+						background-color: var(--theme-color-1);
+						outline: 1px solid var(--theme-color-6);
+					}
+				}
+			}
+		}
+
+	}
+
+	&__slide-item {
+		min-height: rem(200);
+		padding: $global-module-size / 2;
+
+		a {
+			display: flex;
+			height: 100%;
+		}
+	}
+
+	// Form de Newsletter Destacado na Página Home
+
+	/* 	& .c-newsletter {
+		border-bottom: 2px solid $theme-color-2;
+		border-top: 2px solid $theme-color-2;
+		margin-top: $global-module-size;
+		padding: $global-module-size / 2 0;
+
+		@include breakpoint(800) {
+			margin-top: $global-module-size * 2;
+		}
+	} */
+
+	&__posts {
+		@include breakpoint(1200) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+
+			.c-pagination {
+				grid-column: 1 / 3;
+			}
+
+			.c-post {
+				&:nth-of-type(2n) {
+					margin-left: $global-module-size;
+				}
+			}
+		}
+
+		.c-pagination {
+			margin-top: $global-module-size * 2;
+		}
+
+		.c-post,
+		.c-trigger {
+			margin-top: $global-module-size * 2;
+		}
+	}
+}
