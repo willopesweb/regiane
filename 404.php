@@ -1,14 +1,20 @@
 <?php
-// Template Name: Sobre
 get_header();
 ?>
 <main class="l-page" id="content">
-  <section class="l-page-single__content">
+  <section class="l-page-single__content l-page-single__content--404">
     <header class="l-page__header">
-      <h1 class="l-page__title"><?= the_title(); ?></h1>
+      <h1 class="l-page__title">Página não encontrada</h1>
     </header>
-    <div class="l-page-single__post-content">
-      <?= the_content(); ?>
+    <div class="l-page-single__post-content ">
+      <p>Desculpe, mas a página que você procura não existe ou foi excluída.</p>
+      <p>Tente procurar o que você precisa abaixo.</p>
+      <form role="search" method="get" id="searchform" class="c-search" action="<?php echo home_url(); ?>">
+        <label class="screen-reader-text" for="s">Pesquisar por:</label>
+        <input type="text" value="" name="s" id="s" class="c-search__input">
+        <button id="searchsubmit" class="c-search__button icon-search"></button>
+      </form>
+
     </div>
   </section>
   <aside class="l-page-single__content l-page-single__instagram">

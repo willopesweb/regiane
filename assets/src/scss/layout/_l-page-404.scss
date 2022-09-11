@@ -1,0 +1,46 @@
+$layout-name: l-page-single;
+
+.#{$layout-name} {
+	@include container;
+
+	&__header {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin: 0 auto $global-module-size;
+		text-align: center;
+		width: 100%;
+	}
+
+	&__title {
+		font-size: rem(32);
+		line-height: rem(42);
+	}
+
+	&__subtitle {
+		font-size: rem(14);
+		margin-top: rem(10);
+	}
+
+	&__content {
+		display: flex;
+		flex: 0 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		font-size: rem(18);
+		line-height: rem(26);
+		margin: 0 5%;
+		max-width: 90%;
+
+		@include breakpoint(600) {
+			margin: 0 10%;
+			max-width: 80%;
+		}
+
+		@include breakpoint(1500) {
+			margin: 0 auto;
+			max-width: $global-max-width;
+		}
+	}
+}

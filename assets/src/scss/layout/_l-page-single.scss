@@ -33,6 +33,21 @@ $layout-name: l-page-single;
 		margin: 0 5%;
 		max-width: 90%;
 
+		&--404 {
+			text-align: center;
+
+			.l-page__title {
+				text-align: center;
+				width: 100%;
+			}
+
+			.c-search {
+				margin: 0 auto;
+				max-width: rem(500);
+			}
+
+		}
+
 		@include breakpoint(600) {
 			margin: 0 10%;
 			max-width: 80%;
@@ -45,11 +60,13 @@ $layout-name: l-page-single;
 	}
 
 	&__post-content {
+		width: 100%;
+
 		p {
 			display: block;
 			font-size: rem(20);
 			line-height: 2rem;
-			margin-bottom: 1.8rem;
+			margin-bottom: $global-module-size;
 			width: 100%;
 
 			img {
@@ -116,6 +133,19 @@ $layout-name: l-page-single;
 			overflow-wrap: break-word;
 			padding-left: 1em;
 			position: relative;
+		}
+
+		ul {
+			list-style: initial;
+			margin-bottom: $global-module-size;
+			overflow-wrap: break-word;
+			padding-left: $global-module-size;
+		}
+
+		h2 {
+			font-size: rem(36);
+			margin-bottom: $global-module-size;
+			margin-top: $global-module-size * 2;
 		}
 	}
 
@@ -186,13 +216,13 @@ $layout-name: l-page-single;
 
 	&__instagram {
 
-		@include content("grid");
+		display: grid;
 		padding-top: $global-module-size * 2;
 		place-items: center;
 
 		@include breakpoint(700) {
 			grid-template-areas:
-				"space name"
+				"name space"
 				"text feed";
 			grid-template-columns: 1fr 1fr;
 			grid-template-rows: rem(50) auto;
@@ -203,6 +233,7 @@ $layout-name: l-page-single;
 			font-size: rem(20);
 			margin-bottom: $global-module-size;
 			text-align: center;
+
 			@include breakpoint(700) {
 				grid-area: text;
 				margin-top: rem(10);
@@ -216,17 +247,47 @@ $layout-name: l-page-single;
 			}
 		}
 
-		&__name {
-			align-items: center;
-			display: flex;
-			font-size: rem(14);
-			&::before {
-				font-size: rem(25);
-			}
+		.c-instagram__name {
+			font-size: rem(18);
 
 			@include breakpoint(700) {
 				grid-area: name;
-				margin-left: rem(10);
+			}
+		}
+
+		.c-button {
+			font-size: rem(18);
+		}
+	}
+
+	&__portfolio {
+		display: grid;
+		gap: $global-module-size;
+		grid-template-columns: 1fr;
+		margin-bottom: $global-module-size;
+
+		@include breakpoint(700) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		@include breakpoint(900) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		@include breakpoint(1200) {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			article {
+				max-height: rem(500);
+			}
+		}
+
+		article {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+			img {
+				height: 100%;
+				object-fit: cover;
 			}
 		}
 	}

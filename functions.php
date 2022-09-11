@@ -82,94 +82,6 @@ function custom_disable_redirect_canonical($redirect_url)
   return $redirect_url;
 }
 
-// WOOCOMMERCE
-
-// Define quantidade de produtos exibidos por página
-add_filter('loop_shop_per_page', 'theme_loop_shop_per_page');
-
-function theme_loop_shop_per_page()
-{
-  return 12;
-}
-
-// Filtro para remover algumas classes do body com estilos padrão do WooCommerce
-function remove_some_body_class($class)
-{
-  $woo_class = array_search('woocommerce', $class);
-  $woopage_class = array_search('woocommerce-page', $class);
-
-  // Filtrar as classes apenas das páginas Product e Product Archive
-  $search = in_array('archive', $class) || in_array('product-template-default', $class);
-  if (($woo_class || $woopage_class) && $search); {
-    unset($class[$woo_class]);
-    unset($class[$woopage_class]);
-  }
-  return $class;
-}
-
-add_filter('body_class', 'remove_some_body_class');
-
-
-
-// Retorna Categorias
-function theme_list_product_categories($parent = null, $number = null, $orderby = null, $order = null, $hide_empty = false, $ids = null)
-{
-  $args = array(
-    'taxonomy'   => "product_cat",
-    'number'     => $number,
-    'orderby'    => $orderby,
-    'order'      => $order,
-    'hide_empty' => $hide_empty,
-    'include'    => $ids,
-    'parent'    => $parent
-  );
-
-  $product_category = get_terms($args);
-
-  $categories = [];
-  foreach ($product_category as $category) :
-    $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-    $image = wp_get_attachment_url($thumbnail_id);
-    $categories[] = [
-      'name' => $category->name,
-      'link' => $category->slug,
-      'img' => $image
-    ];
-  endforeach;
-  return $categories;
-}
-
-// Products List
-include(get_template_directory() . '/inc/products-list.php');
-
-// Prepara os dados para exibir na página do Produto (Single Product)
-function format_single_product($id, $img_size = 'medium')
-{
-  $product = wc_get_product($id);
-
-  $gallery_ids = $product->get_gallery_attachment_ids();
-  $gallery = [];
-
-  if ($gallery_ids) :
-    foreach ($gallery_ids as $img_id) :
-      $gallery[] = wp_get_attachment_image_src($img_id, $img_size)[0];
-    endforeach;
-  endif;
-
-
-  return [
-    'id' => $id,
-    'name' => $product->get_name(),
-    'price' => $product->get_price_html(),
-    'link' => $product->get_permalink(),
-    'sku' => $product->get_sku(),
-    'description' => $product->get_description(),
-    'img' => wp_get_attachment_image_src($product->get_image_id(), $img_size)[0],
-    'gallery' => $gallery
-  ];
-}
-
-
 /** CUSTOM LOGIN PAGE */
 /*Função que altera a URL na página de Login, trocando pelo endereço do seu site*/
 function my_login_logo_url()
@@ -205,108 +117,6 @@ body.login{
 }
 
 add_action('login_head', 'theme_custom_login_logo');
-
-/** CUSTOM POST TYPES */
-function register_cpt_books()
-{
-  $labels = array(
-    'name' => _x('Livros', 'post type general name'),
-    'singular_name' => _x('Livro', 'post type singular name'),
-    'add_new' => __('Adicionar Novo'),
-    'add_new_item' => __('Adicionar Novo Livro'),
-    'edit_item' => __('Editar Livro'),
-    'new_item' => __('Novo Livro'),
-    'view_item' => __('Ver Livro'),
-    'search_items' => __('Pequisar Livros'),
-    'not_found' =>  __('Nenhum livro encontrado'),
-    'not_found_in_trash' => __('Nenhum livro na Lixeira'),
-    'parent_item_colon' => ''
-  );
-
-  $args = array(
-    'labels' => $labels,
-    'description' => 'Cadastre os seus livros',
-    'public' => true,
-    'menu_position' => 5, // Abaixo de 'Posts'
-    'menu_icon' => 'dashicons-book-alt', // https://developer.wordpress.org/resource/dashicons/
-    'capability_type' => 'post',
-    'rewrite' => array('slug' => 'livro', 'with_front' => true),
-    'query_var' => true,
-    'supports' => array('custom-fields', 'author', 'title'),
-    'publicy_queryable' => true
-  );
-
-  register_post_type('livro', $args);
-}
-
-add_action('init', 'register_cpt_books');
-
-function books_shortcode()
-{
-  $args = array(
-    'post_type' => 'livro',
-    'post_status' => 'publish',
-    'posts_per_page' => 1,
-    'order' => 'ASC',
-  );
-  $html = '';
-  $query = new WP_Query($args);
-  if ($query->have_posts()) {
-    while ($query->have_posts()) {
-      $query->the_post();
-      $book = array(
-        'titulo' => get_the_title(),
-        'sinopse' => get_field("sinopse"),
-        'arquivo' => get_field("arquivo"),
-        'capa' => get_field("capa"),
-        'gratuito' => get_field("gratuito"),
-        'link' => get_field("link")
-      );
-
-      $html .= '<article class="l-book">';
-      $html .= '<img loadind="lazy" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
-      $html .= '<div class="l-book__content">';
-      $html .= '<h1 class="l-book__title">' . $book["titulo"] . '</h1>';
-      $html .= '<div class="l-book__sinopse">' . $book["sinopse"] . '</div> ';
-      $html .= '<div class="l-book__actions">';
-      if ($book["gratuito"] == "Não" && $book["link"]) {
-        $html .= '<a class="c-button c-button--outline" href="' . $book["link"] . '" target="_blank">Comprar</a>';
-      }
-      if ($book["gratuito"] == "Não" && $book["arquivo"]) {
-        $html .= '<a class="c-button c-button--outline" href="' . $book["arquivo"] . '" target="_blank">Ler Amostra</a>';
-      }
-      if ($book["gratuito"] == "Sim" && $book["arquivo"]) {
-        $html .= '<a class="c-button c-button--outline" href="' . $book["arquivo"] . '" target="_blank">Ler</a>';
-      }
-
-      if ($book["gratuito"] == "Sim" && $book["link"]) {
-        $html .= '<a class="c-button c-button--outline" href="' . $book["link"] . '" target="_blank">Ler</a>';
-      }
-
-      $html .= '</div></div></article>';
-    }
-  }
-  wp_reset_postdata();
-  return $html;
-}
-
-add_shortcode('books', 'books_shortcode');
-
-// Categoria Livros
-/* function books_custom_tax()
-{
-  register_taxonomy(
-    'livros-categoria',
-    'livros',
-    array(
-      'label' => __('Categoria'),
-      'rewrite' => array('slug' => 'livros-categoria'),
-      'hierarchical' => true,
-    )
-  );
-}
-add_action('init', 'books_custom_tax'); */
-
 
 /** PERFORMANCE */
 function theme_remove_unnecessary_css_js()
@@ -392,26 +202,124 @@ add_action('init', 'disable_emoji_feature');
 add_filter('option_use_smilies', '__return_false');
 
 
-function crunchify_print_scripts_styles()
+
+/** CUSTOM POST TYPES */
+function register_cpt_books()
 {
+  $labels = array(
+    'name' => _x('Livros', 'post type general name'),
+    'singular_name' => _x('Livro', 'post type singular name'),
+    'add_new' => __('Adicionar Novo'),
+    'add_new_item' => __('Adicionar Novo Livro'),
+    'edit_item' => __('Editar Livro'),
+    'new_item' => __('Novo Livro'),
+    'view_item' => __('Ver Livro'),
+    'search_items' => __('Pequisar Livros'),
+    'not_found' =>  __('Nenhum livro encontrado'),
+    'not_found_in_trash' => __('Nenhum livro na Lixeira'),
+    'parent_item_colon' => ''
+  );
 
-  $result = [];
-  $result['scripts'] = [];
-  $result['styles'] = [];
+  $args = array(
+    'labels' => $labels,
+    'description' => 'Cadastre os seus livros',
+    'public' => true,
+    'menu_position' => 5, // Abaixo de 'Posts'
+    'menu_icon' => 'dashicons-book-alt', // https://developer.wordpress.org/resource/dashicons/
+    'capability_type' => 'post',
+    'rewrite' => array('slug' => 'livro', 'with_front' => true),
+    'query_var' => true,
+    'supports' => array('custom-fields', 'author', 'title'),
+    'publicy_queryable' => true
+  );
 
-  // Print all loaded Scripts
-  global $wp_scripts;
-  foreach ($wp_scripts->queue as $script) :
-    $result['scripts'][] =  $wp_scripts->registered[$script]->src . ";";
-  endforeach;
-
-  // Print all loaded Styles (CSS)
-  global $wp_styles;
-  foreach ($wp_styles->queue as $style) :
-    $result['styles'][] =  $wp_styles->registered[$style]->src . ";";
-  endforeach;
-
-  return $result;
+  register_post_type('livro', $args);
 }
 
-add_action('wp_enqueue_scripts', 'crunchify_print_scripts_styles');
+add_action('init', 'register_cpt_books');
+
+function books_shortcode()
+{
+  $args = array(
+    'post_type' => 'livro',
+    'post_status' => 'publish',
+    'posts_per_page' => 1,
+    'order' => 'ASC',
+  );
+  $html = '';
+  $query = new WP_Query($args);
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      $book = array(
+        'titulo' => get_the_title(),
+        'sinopse' => get_field("sinopse"),
+        'arquivo' => get_field("arquivo"),
+        'capa' => get_field("capa"),
+        'gratuito' => get_field("gratuito"),
+        'link' => get_field("link")
+      );
+
+      $html .= '<article class="l-book">';
+      $html .= '<img loadind="lazy" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '" alt="' . $book["titulo"] . '">';
+      $html .= '<div class="l-book__content">';
+      $html .= '<h1 class="l-book__title">' . $book["titulo"] . '</h1>';
+      $html .= '<div class="l-book__sinopse">' . $book["sinopse"] . '</div> ';
+      $html .= '<div class="l-book__actions">';
+      if ($book["gratuito"] == "Não" && $book["link"]) {
+        $html .= '<a class="c-button c-button--outline" href="' . $book["link"] . '" target="_blank" title="Comprar ' . $book["titulo"] . '">Comprar</a>';
+      }
+      if ($book["gratuito"] == "Não" && $book["arquivo"]) {
+        $html .= '<a class="c-button c-button--outline" href="' . $book["arquivo"] . '" target="_blank" title="Leia a amostra de ' . $book["titulo"] . '">Ler Amostra</a>';
+      }
+      if ($book["gratuito"] == "Sim" && $book["arquivo"]) {
+        $html .= '<a class="c-button c-button--outline" href="' . $book["arquivo"] . '" target="_blank" title="Leia ' . $book["titulo"] . '">Ler</a>';
+      }
+
+      if ($book["gratuito"] == "Sim" && $book["link"]) {
+        $html .= '<a class="c-button c-button--outline" href="' . $book["link"] . '" target="_blank" title="Leia ' . $book["titulo"] . '">Ler</a>';
+      }
+
+      $html .= '</div></div></article>';
+    }
+  }
+  wp_reset_postdata();
+  return $html;
+}
+
+add_shortcode('books', 'books_shortcode');
+
+
+function register_cpt_portfolio()
+{
+  $labels = array(
+    'name' => _x('Portfólio', 'post type general name'),
+    'singular_name' => _x('Portfólio', 'post type singular name'),
+    'add_new' => __('Adicionar Novo'),
+    'add_new_item' => __('Adicionar Novo Livro'),
+    'edit_item' => __('Editar Livro'),
+    'new_item' => __('Novo Livro'),
+    'view_item' => __('Ver Livro'),
+    'search_items' => __('Pequisar Portfólio'),
+    'not_found' =>  __('Nenhum livro encontrado no portfólio'),
+    'not_found_in_trash' => __('Nenhum livro na Lixeira'),
+    'parent_item_colon' => ''
+  );
+
+  $args = array(
+    'labels' => $labels,
+    'description' => 'Cadastre os seus livros no portfólio',
+    'public' => true,
+    'menu_position' => 5, // Abaixo de 'Posts'
+    'menu_icon' => 'dashicons-media-text', // https://developer.wordpress.org/resource/dashicons/
+    'capability_type' => 'post',
+    'rewrite' => array('slug' => 'portfolio', 'with_front' => true),
+    'query_var' => true,
+    'supports' => array('custom-fields', 'author', 'title'),
+    'publicy_queryable' => true
+  );
+
+  register_post_type('portfolio', $args);
+}
+
+add_action('init', 'register_cpt_portfolio');

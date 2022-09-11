@@ -4,6 +4,7 @@ $component-name: c-trigger;
 	background-color: var(--theme-color-1);
 	color: var(--text-color-1);
 	font-weight: bold;
+	height: fit-content;
 	padding: $global-module-size;
 	text-align: center;
 }

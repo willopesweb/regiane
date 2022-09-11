@@ -55,32 +55,15 @@ $layout-name: l-page-home;
 		}
 	}
 
-	// Form de Newsletter Destacado na Página Home
-
-	/* 	& .c-newsletter {
-		border-bottom: 2px solid $theme-color-2;
-		border-top: 2px solid $theme-color-2;
-		margin-top: $global-module-size;
-		padding: $global-module-size / 2 0;
-
-		@include breakpoint(800) {
-			margin-top: $global-module-size * 2;
-		}
-	} */
-
 	&__posts {
 		@include breakpoint(1200) {
 			display: grid;
+			grid-gap: $global-module-size;
 			grid-template-columns: 1fr 1fr;
 
-			.c-pagination {
+			.c-pagination,
+			.c-trigger {
 				grid-column: 1 / 3;
-			}
-
-			.c-post {
-				&:nth-of-type(2n) {
-					margin-left: $global-module-size;
-				}
 			}
 		}
 
