@@ -6,8 +6,8 @@
         ".babelrc": true,
         ".eslintrc.json":true,
         ".stylelintrc.json": true,
-        "webpack.config.js":true,
-        "package.json": true,
+        "webpack.config.js":false,
+        "package.json": false,
         "package-lock.json": true,
         "assets/public": true,
         "emmet.includeLanguages": {

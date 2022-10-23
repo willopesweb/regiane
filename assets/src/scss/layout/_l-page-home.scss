@@ -10,48 +10,19 @@ $layout-name: l-page-home;
 			grid-gap: $global-module-size;
 			grid-template-columns: 70% 30%;
 		}
-
 	}
 
-	&__slide {
-		display: none;
+	&__slides {
+		@include content;
+		margin: 0 calc(5% - #{$global-module-size / 2});
+		max-width: calc(90% + #{$global-module-size});
 
-		@include breakpoint(640) {
-			@include content;
-			margin: 0 calc(5% - #{$global-module-size / 2});
-			max-width: calc(90% + #{$global-module-size});
-			padding-bottom: $global-module-size * 2;
+		.c-carousel {
+			display: none;
 
-			.splide__arrows {
-				display: none;
-			}
-
-			.splide__pagination {
-				align-items: center;
+			@include breakpoint(640) {
 				display: flex;
-				justify-content: center;
-				padding-top: $global-module-size;
-
-				&__page {
-					outline: 1px solid var(--theme-color-2);
-
-					&.is-active {
-						background-color: var(--theme-color-1);
-						outline: 1px solid var(--theme-color-6);
-					}
-				}
 			}
-		}
-
-	}
-
-	&__slide-item {
-		min-height: rem(200);
-		padding: $global-module-size / 2;
-
-		a {
-			display: flex;
-			height: 100%;
 		}
 	}
 

@@ -9,38 +9,45 @@ get_header();
     </header>
     <div class="l-page-single__post-content">
       <?= the_content(); ?>
-      <div class="l-page-single__portfolio">
-        <?php {
-          global $query_string;
-          parse_str($query_string, $my_query_array);
-          $paged = (isset($my_query_array['paged']) && !empty($my_query_array['paged'])) ? $my_query_array['paged'] : 1;
 
-          $args = array(
-            'post_type' => 'portfolio',
-            'post_status' => 'publish',
-            'posts_per_page' => -1,
-            'order' => 'ASC'
-          );
-          $query = new WP_Query($args);
-          if ($query->have_posts()) {
-            while ($query->have_posts()) {
-              $query->the_post();
-              $book = array(
-                'titulo' => get_the_title(),
-                'autor' => get_field("autor"),
-                'capa' => get_field("capa"),
-                'link' => get_field("link")
+      <section class="c-carousel splide js-portfolio-carousel" aria-label="Meus últimos trabalhos de revisão">
+        <h1 class="screen-readers-only">Meus últimos trabalhos de revisão</h1>
+        <div class="splide__track">
+          <ul class="splide__list">
+            <?php {
+              global $query_string;
+              parse_str($query_string, $my_query_array);
+              $paged = (isset($my_query_array['paged']) && !empty($my_query_array['paged'])) ? $my_query_array['paged'] : 1;
+
+              $args = array(
+                'post_type' => 'portfolio',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'order' => 'ASC'
               );
 
-              echo '<article>';
-              echo '<a href="' . $book["link"] . '" target="_blank" title="' . $book["titulo"] . ', de ' . $book["autor"] . '">';
-              echo '<img loadind="lazy" width="270" height="400" src="' . $book["capa"] . '" alt="' . $book["titulo"]  . ', de ' . $book["autor"] . '">';
-              echo '</a></article>';
+              $query = new WP_Query($args);
+              if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                  $query->the_post();
+                  $book = array(
+                    'titulo' => get_the_title(),
+                    'autor' => get_field("autor"),
+                    'capa' => get_field("capa"),
+                    'link' => get_field("link")
+                  );
+
+                  echo '<li class="splide__slide c-carousel__item">';
+                  echo '<a href="' . $book["link"] . '" target="_blank" title="' . $book["titulo"] . ', de ' . $book["autor"] . '">';
+                  echo '<img loadind="lazy" width="270" height="400" src="' . $book["capa"] . '" alt="' . $book["titulo"]  . ', de ' . $book["autor"] . '">';
+                  echo '</a></li>';
+                }
+              }
             }
-          }
-        }
-        ?>
-      </div>
+            ?>
+            </ul>
+            </div>
+      </section>
       <p>Para mais informações a respeito do meu trabalho, entre em contato por meio deste e-mail: <a href="mailto:contato@regianesilva.com.br" title="Contato por email"> contato@regianesilva.com.br</a></p>
     </div>
 
