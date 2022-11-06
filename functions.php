@@ -39,6 +39,16 @@ function theme_css()
 
 add_action('wp_enqueue_scripts', 'theme_css');
 
+function theme_scripts()
+{
+
+  wp_register_script('theme_script', get_template_directory_uri() . '/' . ASSETS_DIR . '/js/main.js', false, '1.1', true);
+
+  wp_enqueue_script('theme_script');
+}
+
+add_action('wp_enqueue_scripts', 'theme_scripts');
+
 
 // Tamanho do resumo dos posts
 function theme_custom_excerpt_length($length)

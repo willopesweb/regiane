@@ -22,7 +22,6 @@ if (document.querySelector('.js-main-carousel')) {
         },
     });
     mainCarousel.mount();
-
 }
 
 if (document.querySelector('.js-portfolio-carousel')) {
@@ -36,7 +35,7 @@ if (document.querySelector('.js-portfolio-carousel')) {
                 perPage: 1,
             },
             900: {
-                perPage: 3,
+                perPage: 4,
             },
         },
     });
