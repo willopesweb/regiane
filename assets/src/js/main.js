@@ -36,7 +36,7 @@ if (document.querySelector('.js-portfolio-carousel')) {
                 perPage: 1,
             },
             900: {
-                perPage: 4,
+                perPage: 3,
             },
         },
     });

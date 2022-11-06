@@ -4,41 +4,43 @@ get_header();
 ?>
 
 <main class="l-page-home" id='content'>
-  <section class="l-page-home__slide splide" aria-label="Meus Livros">
-    <div class="splide__track">
-      <ul class="splide__list">
-        <?php {
-          global $query_string;
-          parse_str($query_string, $my_query_array);
+  <div class="l-page-home__slides">
+    <section class="c-carousel splide js-main-carousel" aria-label="Meus Livros">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <?php {
+            global $query_string;
+            parse_str($query_string, $my_query_array);
 
-          $args = array(
-            'post_type' => 'livro',
-            'post_status' => 'publish',
-            'order' => 'ASC',
-            'orderby' => 'post-date'
-          );
-          $query = new WP_Query($args);
-          if ($query->have_posts()) {
-            while ($query->have_posts()) {
-              $query->the_post();
-              $book = array(
-                'titulo' => get_the_title(),
-                'capa' => get_field("capa"),
-                'link' => get_field("link")
-              );
-              echo '<li class="splide__slide l-page-home__slide-item">';
-              echo  '<a title="' . $book["titulo"] . '" target="_blank" href="' . $book["link"] . '">';
-              echo  '<img alt="' . $book["titulo"] . '" title="' . $book["titulo"] . '" loadind="lazy" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
-              echo  '</a></li>';
+            $args = array(
+              'post_type' => 'livro',
+              'post_status' => 'publish',
+              'order' => 'ASC',
+              'orderby' => 'post-date'
+            );
+            $query = new WP_Query($args);
+            if ($query->have_posts()) {
+              while ($query->have_posts()) {
+                $query->the_post();
+                $book = array(
+                  'titulo' => get_the_title(),
+                  'capa' => get_field("capa"),
+                  'link' => get_field("link")
+                );
+                echo '<li class="splide__slide c-carousel__item">';
+                echo  '<a title="' . $book["titulo"] . '" target="_blank" href="' . $book["link"] . '">';
+                echo  '<img alt="' . $book["titulo"] . '" title="' . $book["titulo"] . '" loadind="lazy" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
+                echo  '</a></li>';
+              }
             }
           }
-        }
 
 
-        ?>
-      </ul>
-    </div>
-  </section>
+          ?>
+        </ul>
+      </div>
+    </section>
+  </div>
   <div class="l-page-home__content">
     <section class="l-page-home__posts">
       <h1 class="screen-readers-only">Posts</h1>
@@ -83,7 +85,7 @@ get_header();
   </div>
 </main>
 
-<script src="<?= get_template_directory_uri() . '/' . ASSETS_DIR . '/js/main.js'?>"></script>
+<script src="<?= get_template_directory_uri() . '/' . ASSETS_DIR . '/js/main.js' ?>"></script>
 
 <?php
 get_footer();
