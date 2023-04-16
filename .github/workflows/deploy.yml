@@ -7,7 +7,7 @@ env:
 on:
   push:
     branches:
-      - testes
+      - main
 
 jobs:
   deploy_hostinger:
@@ -17,6 +17,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: "./"
+
+      - name: Build production assets
+        run: npm run prod
+        working-directory: "./"
 
       - name: Configure SSH
         run: |
@@ -41,6 +49,3 @@ jobs:
           EXCLUDES: bin/rsync-excludes.txt
           SSH_HOST: hostinger
           DESTINATION: "~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane"
-
-      - name: Where I am
-        run: ls -la
