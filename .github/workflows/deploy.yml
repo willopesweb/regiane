@@ -39,5 +39,5 @@ jobs:
       env:
         RSYNC_FLAGS: '' #--dry-run
         SSH_HOST: hostinger
-        DESTINATION: "~/teste"
+        DESTINATION: "~/home/u664972925/domains/regianesilva.com.br/public_html/teste"
  
