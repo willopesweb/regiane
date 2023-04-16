@@ -39,5 +39,5 @@ jobs:
         RSYNC_FLAGS: '' #--dry-run
         EXCLUDES: bin/rsync-excludes.txt
         SSH_HOST: hostinger
-        DESTINATION: "~/public_html/wp-content/themes/regiane"
+        DESTINATION: "~/teste"
  
