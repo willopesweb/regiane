@@ -44,8 +44,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: "~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane"
+        working-directory: "./"
 
       - name: Build production assets
         run: npm run prod
-        working-directory: "~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane"
+        working-directory: "./
