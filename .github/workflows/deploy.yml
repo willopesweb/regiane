@@ -35,9 +35,10 @@ jobs:
         SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
  
     - name: Send files
-      run: "rsync -avO ${{ env.RSYNC_FLAGS }} ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.DESTINATION }}"
+      run: "rsync --delete -avO ${{ env.RSYNC_FLAGS }} --exclude-from=${{ env.EXCLUDES }} ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.DESTINATION }}"
       env:
         RSYNC_FLAGS: '' #--dry-run
+        EXCLUDES: bin/rsync-excludes.txt
         SSH_HOST: hostinger
-        DESTINATION: "~/domains/regianesilva.com.br/public_html/teste"
+        DESTINATION: "~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane"
  
