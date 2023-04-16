@@ -12,3 +12,5 @@ The result can be checked in <a href="https://www.regianesilva.com.br" title="Re
 <li>Javascript ES6</li>
 <li>Webpack</li>
 </ul>
+
+Teste deploy
