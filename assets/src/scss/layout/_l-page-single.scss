@@ -1,295 +1,302 @@
 $layout-name: l-page-single;
 
 .#{$layout-name} {
-	@include container;
+  @include container;
 
-	&__header {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		margin: 0 auto $global-module-size;
-		text-align: center;
-		width: 100%;
-	}
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto $global-module-size;
+    text-align: center;
+    width: 100%;
+  }
 
-	&__title {
-		font-size: rem(32);
-		line-height: rem(42);
-	}
+  &__title {
+    font-size: rem(32);
+    line-height: rem(42);
+  }
 
-	&__subtitle {
-		font-size: rem(14);
-		margin-top: rem(10);
-	}
+  &__subtitle {
+    font-size: rem(14);
+    margin-top: rem(10);
+  }
 
-	&__content {
-		display: flex;
-		flex: 0 1 auto;
-		flex-direction: row;
-		flex-wrap: wrap;
-		font-size: rem(18);
-		line-height: rem(26);
-		margin: 0 5%;
-		max-width: 90%;
+  &__content {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: rem(18);
+    line-height: rem(26);
+    margin: 0 5%;
+    max-width: 90%;
 
-		&--404 {
-			text-align: center;
+    &--404 {
+      text-align: center;
 
-			.l-page__title {
-				text-align: center;
-				width: 100%;
-			}
+      .l-page__title {
+        text-align: center;
+        width: 100%;
+      }
 
-			.c-search {
-				margin: 0 auto;
-				max-width: rem(500);
-			}
+      .c-search {
+        margin: 0 auto;
+        max-width: rem(500);
+      }
+    }
 
-		}
+    @include breakpoint(600) {
+      margin: 0 10%;
+      max-width: 80%;
+    }
 
-		@include breakpoint(600) {
-			margin: 0 10%;
-			max-width: 80%;
-		}
+    @include breakpoint(1500) {
+      margin: 0 auto;
+      max-width: $global-max-width;
+    }
+  }
 
-		@include breakpoint(1500) {
-			margin: 0 auto;
-			max-width: $global-max-width;
-		}
-	}
+  &__post-content {
+    width: 100%;
 
-	&__post-content {
-		width: 100%;
+    .special-title {
+      font-family: MoonTime, Montserrat, sans-serif;
+      font-size: rem(160);
+      margin-bottom: $global-module-size * 4;
+      margin-top: $global-module-size * 6;
+      padding: $global-module-size 0;
+      text-align: center;
+    }
 
-		p {
-			display: block;
-			font-size: rem(20);
-			line-height: 2rem;
-			margin-bottom: $global-module-size;
-			width: 100%;
+    p {
+      display: block;
+      font-size: rem(20);
+      line-height: 2rem;
+      margin-bottom: $global-module-size;
+      width: 100%;
 
-			img {
-				display: block;
-				margin: 0 auto;
-				max-height: rem(400);
-				max-width: 100%;
-				object-fit: contain;
-			}
-		}
+      img {
+        display: block;
+        margin: 0 auto;
+        max-height: rem(400);
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
 
-		a:not(.c-button):not(.page-numbers):not([class^="icon"]) {
-			color: var(--theme-color-6);
-			transition: 0.15s linear;
+    a:not(.c-button):not(.page-numbers):not([class^="icon"]) {
+      color: var(--theme-color-6);
+      transition: 0.15s linear;
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
-		& .wp-block-image {
-			display: block;
-			margin-bottom: $global-module-size * 2;
-			text-align: center;
-			width: 100%;
+    & .wp-block-image {
+      display: block;
+      margin-bottom: $global-module-size * 2;
+      text-align: center;
+      width: 100%;
 
-			figcaption {
-				font-size: rem(14);
-			}
-		}
+      figcaption {
+        font-size: rem(14);
+      }
+    }
 
-		.wp-block-embed {
-			align-items: center;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			margin: $global-module-size * 2 auto;
-			width: 100%;
+    .wp-block-embed {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: $global-module-size * 2 auto;
+      width: 100%;
 
-			&__wrapper {
-				height: 0;
-				max-width: rem(900);
-				padding-bottom: 56.25%;
-				position: relative;
-				width: 100%;
+      &__wrapper {
+        height: 0;
+        max-width: rem(900);
+        padding-bottom: 56.25%;
+        position: relative;
+        width: 100%;
 
-				iframe {
-					height: 100%;
-					left: 0;
-					position: absolute;
-					top: 0;
-					width: 100%;
-				}
-			}
+        iframe {
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
 
-			figcaption {
-				margin-top: rem(10);
-			}
-		}
+      figcaption {
+        margin-top: rem(10);
+      }
+    }
 
-		.wp-block-quote {
-			border-left: 0.25em solid;
-			margin: 0 0 1.75em;
-			overflow-wrap: break-word;
-			padding-left: 1em;
-			position: relative;
-		}
+    .wp-block-quote {
+      border-left: 0.25em solid;
+      margin: 0 0 1.75em;
+      overflow-wrap: break-word;
+      padding-left: 1em;
+      position: relative;
+    }
 
-		ul {
-			list-style: initial;
-			margin-bottom: $global-module-size;
-			overflow-wrap: break-word;
-			padding-left: $global-module-size;
-		}
+    ul {
+      list-style: initial;
+      margin-bottom: $global-module-size;
+      overflow-wrap: break-word;
+      padding-left: $global-module-size;
+    }
 
-		h2 {
-			font-size: rem(36);
-			line-height: rem(42);
-			margin-bottom: $global-module-size;
-			margin-top: $global-module-size * 2;
-		}
-	}
+    h2 {
+      font-size: rem(36);
+      line-height: rem(42);
+      margin-bottom: $global-module-size;
+      margin-top: $global-module-size * 2;
+    }
+  }
 
-	&__share {
-		flex-basis: 100%;
-		margin: $global-module-size * 4 0 $global-module-size * 2 0;
+  &__share {
+    flex-basis: 100%;
+    margin: $global-module-size * 4 0 $global-module-size * 2 0;
 
-		&__title {
-			font-size: rem(16);
-			font-weight: normal;
-			margin: rem(10) 0;
-		}
+    &__title {
+      font-size: rem(16);
+      font-weight: normal;
+      margin: rem(10) 0;
+    }
 
-		& .c-social {
-			margin-left: rem(-10px);
-		}
+    & .c-social {
+      margin-left: rem(-10px);
+    }
 
-		&::after,
-		&::before {
-			background-color: var(--theme-color-1);
-			content: "";
-			display: block;
-			height: rem(2);
-			width: rem(140);
-		}
+    &::after,
+    &::before {
+      background-color: var(--theme-color-1);
+      content: "";
+      display: block;
+      height: rem(2);
+      width: rem(140);
+    }
 
-		&::after {
-			margin-top: $global-module-size;
-		}
+    &::after {
+      margin-top: $global-module-size;
+    }
 
-		&::before {
-			margin-bottom: $global-module-size;
-		}
-	}
+    &::before {
+      margin-bottom: $global-module-size;
+    }
+  }
 
-	&__author {
-		display: flex;
-		flex-basis: 100%;
-		flex-direction: row;
-		flex-wrap: wrap;
-		margin: $global-module-size * 2 0;
+  &__author {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: $global-module-size * 2 0;
 
-		&__title {
-			flex-basis: 100%;
-			font-size: rem(16);
-			font-weight: normal;
-			margin-bottom: rem(10);
-		}
+    &__title {
+      flex-basis: 100%;
+      font-size: rem(16);
+      font-weight: normal;
+      margin-bottom: rem(10);
+    }
 
-		&__content {
-			display: grid;
-			font-size: rem(16);
-			grid-gap: rem(10);
-			grid-template-columns: rem(80) calc(100% - 80px);
-			place-items: center;
-		}
+    &__content {
+      display: grid;
+      font-size: rem(16);
+      grid-gap: rem(10);
+      grid-template-columns: rem(80) calc(100% - 80px);
+      place-items: center;
+    }
 
-		&__image {
-			border-radius: 50%;
-			flex-basis: rem(100);
-			height: rem(80);
-			margin: 0 $global-module-size 0 0;
-			object-fit: cover;
-			padding: 0;
-			width: rem(80);
-		}
-	}
+    &__image {
+      border-radius: 50%;
+      flex-basis: rem(100);
+      height: rem(80);
+      margin: 0 $global-module-size 0 0;
+      object-fit: cover;
+      padding: 0;
+      width: rem(80);
+    }
+  }
 
-	&__instagram {
+  &__instagram {
+    display: grid;
+    padding-top: $global-module-size * 2;
+    place-items: center;
 
-		display: grid;
-		padding-top: $global-module-size * 2;
-		place-items: center;
+    @include breakpoint(700) {
+      grid-template-areas:
+        "name space"
+        "text feed";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: rem(50) auto;
+      place-items: initial;
+    }
 
-		@include breakpoint(700) {
-			grid-template-areas:
-				"name space"
-				"text feed";
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: rem(50) auto;
-			place-items: initial;
-		}
+    &__text {
+      font-size: rem(20);
+      margin-bottom: $global-module-size;
+      text-align: center;
 
-		&__text {
-			font-size: rem(20);
-			margin-bottom: $global-module-size;
-			text-align: center;
+      @include breakpoint(700) {
+        grid-area: text;
+        margin-top: rem(10);
+        text-align: left;
+      }
+    }
 
-			@include breakpoint(700) {
-				grid-area: text;
-				margin-top: rem(10);
-				text-align: left;
-			}
-		}
+    .c-instagram__feed {
+      @include breakpoint(700) {
+        grid-area: feed;
+      }
+    }
 
-		.c-instagram__feed {
-			@include breakpoint(700) {
-				grid-area: feed;
-			}
-		}
+    .c-instagram__name {
+      font-size: rem(18);
 
-		.c-instagram__name {
-			font-size: rem(18);
+      @include breakpoint(700) {
+        grid-area: name;
+      }
+    }
 
-			@include breakpoint(700) {
-				grid-area: name;
-			}
-		}
+    .c-button {
+      font-size: rem(18);
+    }
+  }
 
-		.c-button {
-			font-size: rem(18);
-		}
-	}
+  &__portfolio {
+    display: grid;
+    gap: $global-module-size;
+    grid-template-columns: 1fr;
+    margin-bottom: $global-module-size;
 
-	&__portfolio {
-		display: grid;
-		gap: $global-module-size;
-		grid-template-columns: 1fr;
-		margin-bottom: $global-module-size;
+    @include breakpoint(700) {
+      grid-template-columns: 1fr 1fr;
+    }
 
-		@include breakpoint(700) {
-			grid-template-columns: 1fr 1fr;
-		}
+    @include breakpoint(900) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
-		@include breakpoint(900) {
-			grid-template-columns: 1fr 1fr 1fr;
-		}
+    @include breakpoint(1200) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      article {
+        max-height: rem(500);
+      }
+    }
 
-		@include breakpoint(1200) {
-			grid-template-columns: 1fr 1fr 1fr 1fr;
-			article {
-				max-height: rem(500);
-			}
-		}
-
-		article {
-			align-items: center;
-			display: flex;
-			justify-content: center;
-			img {
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-	}
+    article {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
 }

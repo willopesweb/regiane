@@ -1,0 +1,43 @@
+name: Deploy
+ 
+env:
+  SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
+  SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+ 
+on:
+  push:
+    branches:
+      - master
+ 
+jobs:
+  deploy_hostinger:
+    name: Deploy to Hostinger
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+ 
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/deploy.key
+        chmod 600 ~/.ssh/deploy.key
+        cat >>~/.ssh/config <<END
+        Host hostinger
+          HostName $SSH_HOST
+          User $SSH_USER
+          IdentityFile ~/.ssh/deploy.key
+          StrictHostKeyChecking no
+        END
+      env:
+        SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+ 
+    - name: Send files
+      run: "rsync -avO ${{ env.RSYNC_FLAGS }} --exclude-from=${{ env.EXCLUDES }} ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.DESTINATION }}"
+      env:
+        RSYNC_FLAGS: '' #--dry-run
+        EXCLUDES: bin/rsync-excludes.txt
+        SSH_HOST: hostinger
+        DESTINATION: "~/public_html/wp-content/themes/regiane"
+ 
