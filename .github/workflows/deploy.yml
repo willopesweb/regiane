@@ -48,4 +48,4 @@ jobs:
 
       - name: Build production assets
         run: npm run prod
-        working-directory: "./
+        working-directory: "./"
