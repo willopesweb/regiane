@@ -47,6 +47,6 @@ jobs:
         working-directory: ~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane
 
     - name: Build production assets
-      run: npm run prod
-      working-directory: ~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane
+        run: npm run prod
+        working-directory: ~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane
  
