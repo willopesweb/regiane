@@ -29,6 +29,7 @@ jobs:
           User $SSH_USER
           IdentityFile ~/.ssh/deploy.key
           StrictHostKeyChecking no
+          Port 65002
         END
       env:
         SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
