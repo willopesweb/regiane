@@ -3,6 +3,7 @@
 *.git
 *.gitkeep
 *.github
+README.md
  
 /bin
 *rsync-excludes.txt
