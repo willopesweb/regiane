@@ -7,7 +7,7 @@ env:
 on:
   push:
     branches:
-      - main
+      - testes
 
 jobs:
   deploy_hostinger:
@@ -42,10 +42,5 @@ jobs:
           SSH_HOST: hostinger
           DESTINATION: "~/domains/regianesilva.com.br/public_html/wp-content/themes/regiane"
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: "./"
-
-      - name: Build production assets
-        run: npm run prod
-        working-directory: "./"
+      - name: Where I am
+        run: ls -la
