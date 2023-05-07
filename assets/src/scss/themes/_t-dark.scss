@@ -1,5 +1,4 @@
 body {
-
 	transition: background-color 0.25s;
 	will-change: background-color;
 
@@ -8,5 +7,9 @@ body {
 		--main-text-color: var(--theme-color-3);
 		--logo-color: var(--theme-color-3);
 		--desktop-menu-item-hover: var(--theme-color-6);
+
+		--button-outline-color: var(--theme-color-3);
+		--button-text-color: var(--theme-color-3);
+		--button-background-color: var(--theme-color-3);
 	}
 }

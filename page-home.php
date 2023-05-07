@@ -28,9 +28,9 @@ get_header();
                   'link' => get_field("link")
                 );
                 echo '<li class="splide__slide c-carousel__item">';
-                echo  '<a title="' . $book["titulo"] . '" target="_blank" href="' . $book["link"] . '">';
-                echo  '<img alt="' . $book["titulo"] . '" title="' . $book["titulo"] . '" loadind="lazy" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
-                echo  '</a></li>';
+                echo '<a title="' . $book["titulo"] . '" target="_blank" href="' . $book["link"] . '">';
+                echo '<img alt="' . $book["titulo"] . '" title="' . $book["titulo"] . '" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
+                echo '</a></li>';
               }
             }
           }
@@ -58,12 +58,12 @@ get_header();
       );
 
       $the_query = new WP_Query($args); //Create our new custom query
-      if ($the_query->have_posts()) :
-        while ($the_query->have_posts()) :
+      if ($the_query->have_posts()):
+        while ($the_query->have_posts()):
           $the_query->the_post();
           require 'inc/post-card.php';
         endwhile;
-      ?>
+        ?>
 
 
 
@@ -73,8 +73,8 @@ get_header();
           ?>
         </div>
 
-      <?php
-      else : ?>
+        <?php
+      else: ?>
         <div class="c-trigger">
           <p>Desculpe, nenhum post foi encontrado.</p>
         </div>

@@ -2,6 +2,12 @@ $component-name: c-button;
 
 $button-font-family: $font-family-1;
 
+:root {
+	--button-outline-color: var(--text-color-1);
+	--button-text-color: var(--text-color-1);
+	--button-background-color: var(--text-color-1);
+}
+
 @mixin c-button {
 	border: 0;
 	border-radius: 0;
@@ -20,8 +26,8 @@ $button-font-family: $font-family-1;
 
 @mixin c-button--outline {
 	background-color: inherit;
-	border: 1px solid var(--text-color-1);
-	color: var(--text-color-1);
+	border: 1px solid var(--button-outline-color);
+	color: var(--button-text-color);
 	padding: rem(7) rem(14);
 	&:hover,
 	&:focus,

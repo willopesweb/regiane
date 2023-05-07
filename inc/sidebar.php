@@ -14,8 +14,8 @@
     'post_type' => 'livro',
     'post_status' => 'publish',
     'posts_per_page' => -1,
-    'meta_key'    => 'destaque',
-    'meta_value'  => 'Sim',
+    'meta_key' => 'destaque',
+    'meta_value' => 'Sim',
     'order' => 'ASC',
   );
   $html = '';
@@ -26,15 +26,15 @@
       'capa' => get_field("capa", $query->posts[0]->ID),
       'link' => $query->posts[0]->post_name
     );
-  ?>
+    ?>
     <section class="l-sidebar__book">
       <h2 class="l-sidebar__title">Confira meu último lançamento</h2>
       <a href="<?= $book['link'] ?>" title="<?= $book['titulo'] ?>">
-        <img class="l-sidebar__cover" loading="lazy" src="<?= $book['capa'] ?>" alt="<?= $book['titulo'] ?>">
+        <img class="l-sidebar__cover lazy" height="400" width="200" data-src="<?= $book['capa'] ?>" alt="<?= $book['titulo'] ?>">
       </a>
     </section>
-  <?php
-  }      ?>
+    <?php
+  } ?>
 
   <section class="l-sidebar__about">
     <h1 class="screen-readers-only">Sobre a Autora</h1>
@@ -56,14 +56,14 @@
 
   <?php
   /*    <section class="c-newsletter">
-    <div class="c-newsletter__content">
-      <h2 class="l-sidebar__title">Seja o primeiro a receber as novidades</h2>
-      <form action="" class="c-newsletter__form">
-        <label for="newsletter-email" class="screen-readers-only">Seu Email:</label>
-        <input name="newsletter-email" placeholder="Seu Email" type="email" class="c-newsletter__input"></input>
-        <button class="c-newsletter__button">Enviar</button>
-      </form>
-    </div>
+  <div class="c-newsletter__content">
+  <h2 class="l-sidebar__title">Seja o primeiro a receber as novidades</h2>
+  <form action="" class="c-newsletter__form">
+  <label for="newsletter-email" class="screen-readers-only">Seu Email:</label>
+  <input name="newsletter-email" placeholder="Seu Email" type="email" class="c-newsletter__input"></input>
+  <button class="c-newsletter__button">Enviar</button>
+  </form>
+  </div>
   </section>  */
   ?>
 

@@ -25,6 +25,10 @@ $layout-name: l-page-contact;
 
 	&__form {
 		width: 100%;
+		.wpcf7-form {
+			display: flex !important;
+			flex-direction: column;
+		}
 	}
 
 	&__image {
@@ -40,19 +44,4 @@ $layout-name: l-page-contact;
 			}
 		}
 	}
-
-	/*   &__image {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    padding: $global-module-size * 2 0;
-    @include col(12);
-    @include breakpoint(600) {
-      @include col(4);
-      padding: 0;
-    }
-    @include breakpoint(700) {
-      @include col(6);
-    }
-  } */
 }

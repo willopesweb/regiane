@@ -5,7 +5,9 @@ get_header();
 <main class="l-page" id="content">
   <section class="l-page-single__content">
     <header class="l-page__header">
-      <h1 class="l-page__title"><?= the_title(); ?></h1>
+      <h1 class="l-page__title">
+        <?= the_title(); ?>
+      </h1>
     </header>
     <div class="l-page-single__post-content">
       <?= the_content(); ?>
@@ -39,18 +41,20 @@ get_header();
 
                   echo '<li class="splide__slide c-carousel__item">';
                   echo '<a href="' . $book["link"] . '" target="_blank" title="' . $book["titulo"] . ', de ' . $book["autor"] . '">';
-                  echo '<img loadind="lazy" width="270" height="400" src="' . $book["capa"] . '" alt="' . $book["titulo"]  . ', de ' . $book["autor"] . '">';
+                  echo '<img loadind="lazy" width="270" height="400" src="' . $book["capa"] . '" alt="' . $book["titulo"] . ', de ' . $book["autor"] . '">';
                   echo '</a></li>';
                 }
               }
             }
             ?>
-            </ul>
-            </div>
+          </ul>
+        </div>
       </section>
-      <p>Para mais informações a respeito do meu trabalho, entre em contato por meio deste e-mail: <a href="mailto:contato@regianesilva.com.br" title="Contato por email"> contato@regianesilva.com.br</a></p>
+      <p>Para mais informações a respeito do meu trabalho, entre em contato por meio deste e-mail: <a href="mailto:contato@regianesilva.com.br" title="Contato por email"> contato@regianesilva.com.br</a> ou <b> preencha o formulário abaixo</b></p>
     </div>
-
+    <div class="l-page-single__form">
+      <?= do_shortcode('[contact-form-7 id="553" title="Formulário de Revisão"]'); ?>
+    </div>
   </section>
   <aside class="l-page-single__content l-page-single__instagram">
     <p class="l-page-single__instagram__text">Você pode me seguir no Instagram para
