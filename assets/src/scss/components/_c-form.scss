@@ -2,7 +2,6 @@ $component-name: c-form;
 
 .#{$component-name},
 .wpcf7-form {
-	// Plugin Contact Form 7
 	@include breakpoint(700) {
 		display: grid;
 		grid-gap: 10px;
@@ -13,26 +12,22 @@ $component-name: c-form;
 		}
 	}
 
-	p {
+	p:not(.comment-form-cookies-consent) {
 		align-items: center;
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 	}
 
 	label {
 		display: flex;
-		flex-direction: column;
 		font-size: rem(14);
 		margin-bottom: rem(5);
+		position: relative;
 		width: 100%;
 
-		br {
-			display: none;
-		}
-
-		.wpcf7-not-valid-tip {
-			font-size: rem(12);
-			font-weight: bold;
+		.required {
+			margin-left: rem(5);
 		}
 	}
 
@@ -63,6 +58,33 @@ $component-name: c-form;
 		@include c-button;
 		@include c-button--outline;
 		max-width: rem(100);
+	}
+}
+
+// Plugin Contact Form 7
+.wpcf7-form {
+	p:has(.wpcf7-submit) {
+		align-items: flex-end;
+		grid-column: 1 / 3;
+	}
+
+	label {
+		flex-direction: column;
+
+		br {
+			display: none;
+		}
+
+		.wpcf7-not-valid-tip {
+			font-size: rem(12);
+			font-weight: bold;
+		}
+
+		.wpcf7-form-control-wrap {
+			input {
+				margin: 0;
+			}
+		}
 	}
 
 	.wpcf7-response-output {
