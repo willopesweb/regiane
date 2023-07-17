@@ -5,7 +5,7 @@ import Splide from "@splidejs/splide";
 
 if (document.querySelector(".js-main-carousel")) {
   const mainCarousel = new Splide(".js-main-carousel", {
-    arrows: "false",
+    arrows: false,
     type: "loop",
     perPage: 5,
     keyboard: true,
@@ -23,7 +23,7 @@ if (document.querySelector(".js-main-carousel")) {
 
 if (document.querySelector(".js-portfolio-carousel")) {
   const portfolioCarousel = new Splide(".js-portfolio-carousel", {
-    arrows: "false",
+    arrows: false,
     type: "loop",
     perPage: 5,
     keyboard: true,
