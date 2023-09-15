@@ -30,7 +30,7 @@ add_action('after_setup_theme', 'theme_initial_setup');
 function theme_css()
 {
   wp_register_style('theme-fonts', get_template_directory_uri() . '/' . ASSETS_DIR . '/fonts/fonts.css', [], '1.0.0', false);
-  wp_register_style('theme-style', get_template_directory_uri() . '/' . ASSETS_DIR . '/css/main.css', [], '1.0.2', false);
+  wp_register_style('theme-style', get_template_directory_uri() . '/' . ASSETS_DIR . '/css/main.css', [], '1.0.3', false);
   wp_register_style('theme-icons', get_template_directory_uri() . '/' . ASSETS_DIR . '/fonts/icons.css', [], '1.0.0', false);
   wp_enqueue_style('theme-fonts');
   wp_enqueue_style('theme-style');

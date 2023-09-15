@@ -67,11 +67,15 @@ $layout-name: l-page-single;
 
     .special-title {
       font-family: MoonTime, Montserrat, sans-serif;
-      font-size: rem(160);
+      font-size: rem(100);
       margin-bottom: $global-module-size * 4;
       margin-top: $global-module-size * 6;
       padding: $global-module-size 0;
       text-align: center;
+
+      @include breakpoint(600) {
+        font-size: rem(160);
+      }
     }
 
     p {
@@ -147,13 +151,13 @@ $layout-name: l-page-single;
       position: relative;
     }
 
-    ul {
+    ul:not(.splide__pagination) {
       list-style: initial;
       margin-bottom: $global-module-size;
       overflow-wrap: break-word;
       padding-left: $global-module-size;
 
-      li {
+      li:not(.c-carousel__item) {
         font-size: rem(20);
         line-height: 2rem;
         margin-bottom: $global-module-size;
