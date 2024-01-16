@@ -8,7 +8,24 @@ get_header();
       <h1 class="l-page__title">Fale Comigo</h1>
     </header>
     <div class="l-page-contact__form">
-      <?= do_shortcode('[contact-form-7 id="69" title="Formulário de Contato"]') ?>
+      <form action="" method="post" class="c-form js-form" aria-label="Formulário de contato">
+        <label class="c-form__label">
+          <span>Nome</span>
+          <input required aria-required="true" aria-invalid="false" value="" type="text" name="name"></span>
+        </label>
+
+        <label class="c-form__label">
+          <span>E-mail</span>
+          <input required aria-required="true" aria-invalid="false" value="" type="email" name="email"></span>
+        </label>
+        <label class="c-form__label">
+          <span>Sua Mensagem</span>
+          <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" name="message"></textarea>
+        </label>
+
+        <input class="c-button c-button--outline" type="submit" value="Enviar">
+        <span class="c-form__loading"></span>
+      </form>
     </div>
     <div class="l-page-contact__image">
       <?php include ASSETS_DIR . '/img/contato.svg' ?>

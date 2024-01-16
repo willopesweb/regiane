@@ -75,7 +75,7 @@ get_header();
 
       <?php
       else : ?>
-        <div class="c-trigger">
+        <div class="c-notification">
           <p>Desculpe, nenhum post foi encontrado.</p>
         </div>
       <?php endif; ?>

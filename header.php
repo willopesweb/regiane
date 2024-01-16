@@ -63,10 +63,6 @@
     </nav>
   </header>
 
-  <script>
-
-  </script>
-
   <script async>
     const nav = document.querySelector('#nav');
     const menu = document.querySelector('#menu');
@@ -142,3 +138,20 @@
       }
     });
   </script>
+
+  <?php
+  /*   $to = 'willianlopes25@outlook.com';
+  $subject = 'Assunto do Email';
+  $message = 'Conteúdo do Email';
+  $headers = array('Content-Type: text/html; charset=UTF-8');
+
+  // Envie o email
+  $result = wp_mail($to, $subject, $message, $headers);
+
+  // Verifique se o email foi enviado com sucesso
+  if ($result) {
+    echo 'Email enviado com sucesso!';
+  } else {
+    echo 'Erro ao enviar o email.';
+  } */
+  ?>

@@ -7,15 +7,15 @@ global $wp_query;
 
 <main class="l-page-home" id='content'>
   <header class="l-page-single__header">
-      <?php
-      if ($wp_query->found_posts == 0) {
-        echo '<h1 class="l-page-single____title"> Nenhum resultado encontrado para "' . get_search_query() . '"</h1>';
-        echo '<p class=s"l-page-single__subtitle">Tente refazer a pesquisa usando outros termos</p>';
-      } else {
-        echo '<h1 class="l-page-single____title">' . $wp_query->found_posts . ' resultados para "' . get_search_query() . '"</h1>';
-        echo '<p class="l-page-single__subtitle">Espero que encontre o que está procurando! :)</p>';
-      }
-      ?>
+    <?php
+    if ($wp_query->found_posts == 0) {
+      echo '<h1 class="l-page-single____title"> Nenhum resultado encontrado para "' . get_search_query() . '"</h1>';
+      echo '<p class=s"l-page-single__subtitle">Tente refazer a pesquisa usando outros termos</p>';
+    } else {
+      echo '<h1 class="l-page-single____title">' . $wp_query->found_posts . ' resultados para "' . get_search_query() . '"</h1>';
+      echo '<p class="l-page-single__subtitle">Espero que encontre o que está procurando! :)</p>';
+    }
+    ?>
   </header>
 
   <div class="l-page-home__content">
@@ -54,7 +54,7 @@ global $wp_query;
 
       <?php
       else : ?>
-        <div class="c-trigger">
+        <div class="c-notification">
           <p>Desculpe, nenhum post foi encontrado.</p>
         </div>
       <?php endif; ?>

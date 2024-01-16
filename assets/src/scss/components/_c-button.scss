@@ -15,6 +15,8 @@ $button-font-family: $font-family-1;
 	font-family: $button-font-family, sans-serif;
 	font-weight: 500;
 	transition: 0.15s linear;
+	width: fit-content;
+
 	&:focus,
 	&:active {
 		border: none;
@@ -29,6 +31,7 @@ $button-font-family: $font-family-1;
 	border: 1px solid var(--button-outline-color);
 	color: var(--button-text-color);
 	padding: rem(7) rem(14);
+
 	&:hover,
 	&:focus,
 	&:active {
@@ -37,6 +40,7 @@ $button-font-family: $font-family-1;
 		outline: none;
 	}
 }
+
 .#{$component-name} {
 	@include c-button;
 }

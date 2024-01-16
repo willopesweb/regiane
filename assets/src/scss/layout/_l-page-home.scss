@@ -33,7 +33,7 @@ $layout-name: l-page-home;
 			grid-template-columns: 1fr 1fr;
 
 			.c-pagination,
-			.c-trigger {
+			.c-notification {
 				grid-column: 1 / 3;
 			}
 		}
@@ -43,7 +43,7 @@ $layout-name: l-page-home;
 		}
 
 		.c-post,
-		.c-trigger {
+		.c-notification {
 			margin-top: $global-module-size * 2;
 		}
 	}

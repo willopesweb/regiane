@@ -58,12 +58,12 @@ get_header();
       );
 
       $the_query = new WP_Query($args); //Create our new custom query
-      if ($the_query->have_posts()):
-        while ($the_query->have_posts()):
+      if ($the_query->have_posts()) :
+        while ($the_query->have_posts()) :
           $the_query->the_post();
           require 'inc/post-card.php';
         endwhile;
-        ?>
+      ?>
 
 
 
@@ -73,9 +73,9 @@ get_header();
           ?>
         </div>
 
-        <?php
-      else: ?>
-        <div class="c-trigger">
+      <?php
+      else : ?>
+        <div class="c-notification">
           <p>Desculpe, nenhum post foi encontrado.</p>
         </div>
       <?php endif; ?>
