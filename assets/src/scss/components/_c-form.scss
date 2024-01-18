@@ -10,6 +10,11 @@ $component-name: c-form;
 		width: 100%;
 	}
 
+	&__actions {
+		display: flex;
+		gap: $global-module-size;
+	}
+
 	textarea,
 	input:not([type="submit"]),
 	select {

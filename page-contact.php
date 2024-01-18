@@ -22,9 +22,14 @@ get_header();
           <span>Sua Mensagem</span>
           <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" name="message"></textarea>
         </label>
-
-        <input class="c-button c-button--outline" type="submit" value="Enviar">
-        <span class="c-form__loading"></span>
+        <div class="c-form__actions">
+          <input class="c-button c-button--outline" type="submit" value="Enviar">
+          <div class="c-loading">
+            <figure class="page"></figure>
+            <figure class="page"></figure>
+            <figure class="page"></figure>
+          </div>
+        </div>
       </form>
     </div>
     <div class="l-page-contact__image">

@@ -17,7 +17,10 @@ async function handleSubmit(e: Event) {
     formDataObject[key] = value as string;
   });
 
-  console.log("Dados do formulário:", formDataObject);
+  formDataObject.subject = `${formDataObject.name} enviou uma mensagem pelo site!`;
+  formDataObject.emailBody = `<b>Nome: </b>${formDataObject.name}<br><b>Email: </b>${formDataObject.email}<br><b>Mensagem: </b>${formDataObject.message}<br>`;
+
+  console.log(formDataObject);
 
   try {
     const result = await sendEmail(formDataObject);
@@ -37,7 +40,7 @@ async function sendEmail(
   formData: Record<string, string>
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const response = await fetch("/inc/wp-mail-enviar-email.php", {
+    const response = await fetch(`${window.location.origin}/wp-send-mail.php`, {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {

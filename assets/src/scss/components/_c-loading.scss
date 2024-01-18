@@ -1,0 +1,79 @@
+$component-name: c-loading;
+$theme-color-1: #efc7ad;
+$theme-color-2: #0f0f0f;
+
+.#{$component-name} {
+	--book-border: 1px solid var(--theme-color-2);
+	--book-pages: var(--theme-color-1);
+	--book-pages-turning: var(--theme-color-4);
+
+
+	border: var(--book-border);
+	width: 60px;
+	height: 45px;
+	position: relative;
+	perspective: 150px;
+	/* 	opacity: 0;
+	visibility: hidden; */
+	transition: var(--theme-default-transition);
+
+	&.is-visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.page {
+		display: block;
+		width: 30px;
+		height: 45px;
+		border: var(--book-border);
+		border-left: 1px solid var(--book-pages);
+		margin: 0;
+		position: absolute;
+		right: -1px;
+		top: -1px;
+		overflow: hidden;
+		background-color: var(--book-pages);
+		transform-style: preserve-3d;
+		-webkit-transform-origin: left center;
+		transform-origin: left center;
+	}
+
+	.page:nth-child(1) {
+		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+	}
+
+	.page:nth-child(2) {
+		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+	}
+
+	.page:nth-child(3) {
+		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+	}
+
+
+	/* Page turn */
+
+	@keyframes pageTurn {
+		0% {
+			transform: rotateY(0deg);
+		}
+
+		20% {
+			background-color: var(--book-pages);
+		}
+
+		40% {
+			background-color: var(--book-pages-turning);
+			transform: rotateY(-180deg);
+		}
+
+		100% {
+			background-color: var(--book-pages);
+			transform: rotateY(-180deg);
+		}
+	}
+}
