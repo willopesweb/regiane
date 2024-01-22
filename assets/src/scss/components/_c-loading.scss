@@ -7,15 +7,14 @@ $theme-color-2: #0f0f0f;
 	--book-pages: var(--theme-color-1);
 	--book-pages-turning: var(--theme-color-4);
 
-
 	border: var(--book-border);
-	width: 60px;
 	height: 45px;
-	position: relative;
+	opacity: 0;
 	perspective: 150px;
-	/* 	opacity: 0;
-	visibility: hidden; */
+	position: relative;
 	transition: var(--theme-default-transition);
+	visibility: hidden;
+	width: 60px;
 
 	&.is-visible {
 		opacity: 1;
@@ -23,37 +22,36 @@ $theme-color-2: #0f0f0f;
 	}
 
 	.page {
-		display: block;
-		width: 30px;
-		height: 45px;
+		background-color: var(--book-pages);
 		border: var(--book-border);
 		border-left: 1px solid var(--book-pages);
+		display: block;
+		height: 45px;
 		margin: 0;
+		overflow: hidden;
 		position: absolute;
 		right: -1px;
 		top: -1px;
-		overflow: hidden;
-		background-color: var(--book-pages);
-		transform-style: preserve-3d;
 		-webkit-transform-origin: left center;
 		transform-origin: left center;
+		transform-style: preserve-3d;
+		width: 30px;
 	}
 
 	.page:nth-child(1) {
-		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
-		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.6s infinite;
+		-webkit-animation: pageturn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.6s infinite;
 	}
 
 	.page:nth-child(2) {
-		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
-		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.45s infinite;
+		-webkit-animation: pageturn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.45s infinite;
 	}
 
 	.page:nth-child(3) {
-		-webkit-animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
-		animation: pageTurn 1.2s cubic-bezier(0, .39, 1, .68) 1.2s infinite;
+		-webkit-animation: pageturn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
+		animation: pageTurn 1.2s cubic-bezier(0, 0.39, 1, 0.68) 1.2s infinite;
 	}
-
 
 	/* Page turn */
 

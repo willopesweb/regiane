@@ -1,14 +1,14 @@
 $component-name: c-notification;
 
 .#{$component-name} {
-	background-color: var(--theme-color-1);
-	color: var(--text-color-1);
+	background-color: var(--theme-color-2);
+	color: var(--theme-color-1);
 	height: fit-content;
 	padding: $global-module-size;
 	text-align: center;
 
 	&.success {
-		background-color: #01c851;
+		//background-color: #01c851;
 	}
 
 	&.warning {

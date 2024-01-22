@@ -1,6 +1,8 @@
 $component-name: c-form;
 
 .#{$component-name} {
+	display: flex;
+	flex-direction: column;
 
 	&__label {
 		display: flex;
@@ -17,10 +19,12 @@ $component-name: c-form;
 
 	textarea,
 	input:not([type="submit"]),
-	select {
+	select,
+	option {
 		background-color: var(--theme-color-4);
 		border: none;
 		border-radius: 0;
+		font-size: rem(16);
 		margin-bottom: rem(10);
 
 		&::placeholder {
@@ -35,6 +39,15 @@ $component-name: c-form;
 			border-radius: 0;
 			box-shadow: none;
 			outline: 2px solid darken($theme-color-4, 15%);
+		}
+	}
+
+	&__group {
+		display: grid;
+
+		@include breakpoint(600) {
+			gap: $global-module-size;
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 }

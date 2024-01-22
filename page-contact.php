@@ -11,24 +11,20 @@ get_header();
       <form action="" method="post" class="c-form js-form" aria-label="Formulário de contato">
         <label class="c-form__label">
           <span>Nome</span>
-          <input required aria-required="true" aria-invalid="false" value="" type="text" name="name"></span>
+          <input required aria-required="true" aria-invalid="false" value="" type="text" name="Nome"></span>
         </label>
 
         <label class="c-form__label">
           <span>E-mail</span>
-          <input required aria-required="true" aria-invalid="false" value="" type="email" name="email"></span>
+          <input required aria-required="true" aria-invalid="false" value="" type="email" name="Email"></span>
         </label>
         <label class="c-form__label">
           <span>Sua Mensagem</span>
-          <textarea required cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" name="message"></textarea>
+          <textarea required cols="40" rows="10" aria-invalid="false" name="Mensagem"></textarea>
         </label>
         <div class="c-form__actions">
           <input class="c-button c-button--outline" type="submit" value="Enviar">
-          <div class="c-loading">
-            <figure class="page"></figure>
-            <figure class="page"></figure>
-            <figure class="page"></figure>
-          </div>
+          <?= themeLoadingSpinner() ?>
         </div>
       </form>
     </div>

@@ -53,7 +53,51 @@ get_header();
       <p style="margin-top:10px">Para mais informações a respeito do meu trabalho, entre em contato por meio deste e-mail: <a href="mailto:contato@regianesilva.com.br" title="Contato por email"> contato@regianesilva.com.br</a> ou <b> preencha o formulário abaixo</b></p>
     </div>
     <div class="l-page-single__form">
-      <?= do_shortcode('[contact-form-7 id="581" title="Formulário de Revisão"]'); ?>
+      <form id="revisao" action="" method="post" class="c-form js-form" aria-label="Formulário de revisão">
+        <div class="c-form__group">
+          <div>
+            <label class="c-form__label">
+              <span>Nome</span>
+              <input required aria-required="true" aria-invalid="false" value="" type="text" name="Nome"></span>
+            </label>
+            <label class="c-form__label">
+              <span>E-mail</span>
+              <input required aria-required="true" aria-invalid="false" value="" type="email" name="Email"></span>
+            </label>
+            <label>
+              <span>Orçamento para:</span>
+              <select aria-invalid="false" name="Orçamento">
+                <option value="">—Escolha uma opção—</option>
+                <option value="Revisão gramatical e ortográfica">Revisão gramatical e ortográfica</option>
+                <option value="Crítica literária">Crítica literária</option>
+                <option value="Revisão gramatical e ortográfica + Crítica literária">Revisão gramatical e ortográfica + Crítica literária</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label class="c-form__label">
+              <span>Gênero literário</span>
+              <input required aria-required="true" aria-invalid="false" value="" type="text" name="Gênero"></span>
+            </label>
+            <label class="c-form__label">
+              <span>Páginas</span>
+              <input required aria-required="true" aria-invalid="false" value="" type="number" name="Páginas"></span>
+            </label>
+            <label class="c-form__label">
+              <span>Palavras</span>
+              <input required aria-required="true" aria-invalid="false" value="" type="number" name="Palavras"></span>
+            </label>
+          </div>
+        </div>
+        <label class="c-form__label">
+          <span>Detalhes</span>
+          <textarea cols="40" rows="10" aria-invalid="false" name="Detalhes"></textarea>
+        </label>
+        <div class="c-form__actions">
+          <input class="c-button c-button--outline" type="submit" value="Enviar">
+          <?= themeLoadingSpinner() ?>
+        </div>
+      </form>
     </div>
   </section>
   <aside class="l-page-single__content l-page-single__instagram">
