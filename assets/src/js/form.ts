@@ -5,6 +5,8 @@ interface Email {
   message: string;
   name: string;
   subject: string;
+  captcha?: string;
+  captchaCode?: string;
 }
 
 const forms = document.querySelectorAll(".js-form");
@@ -25,16 +27,24 @@ async function handleSubmit(this: HTMLElement, e: Event) {
     formDataObject[key] = value as string;
   });
 
+  let message = "";
+
+  for (const key in formDataObject) {
+    if (key !== "Captcha" && key !== "CaptchaCode") {
+      message += `<b>${key}: </b>${formDataObject[key]}<br/>`;
+    }
+  }
+
   const EmailData: Email = {
     email: formDataObject.Email,
-    message: Object.entries(formDataObject)
-      .map(([key, value]) => `<b>${key}: </b>${value}<br>`)
-      .join(""),
+    message: message,
     name: formDataObject.Nome,
     subject:
       this.id === "revisao"
         ? "Você recebeu um novo pedido de orçamento!"
         : `${formDataObject.Nome} enviou uma mensagem pelo site!`,
+    captcha: formDataObject.Captcha,
+    captchaCode: formDataObject.CaptchaCode,
   };
 
   console.log(formDataObject);
@@ -48,10 +58,11 @@ async function submitContent(form: HTMLElement, EmailData: Email) {
 
   try {
     const result = await sendEmail(EmailData);
+    console.log(result);
     if (result.success) {
       createNotification("E-mail enviado com sucesso!", "success");
     } else {
-      createNotification(`Erro ao enviar e-mail: ${result.error}`, "error");
+      createNotification(`${result.error}`, "error");
     }
   } catch (error) {
     console.error("Erro na solicitação de envio de e-mail:", error);
@@ -78,7 +89,7 @@ async function sendEmail(
       const errorResponse = await response.json();
       return {
         success: false,
-        error: errorResponse.message || "Erro desconhecido",
+        error: errorResponse.message, // || "Erro desconhecido",
       };
     }
   } catch (error) {

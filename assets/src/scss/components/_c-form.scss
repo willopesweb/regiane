@@ -17,6 +17,23 @@ $component-name: c-form;
 		gap: $global-module-size;
 	}
 
+	&__captcha {
+		display: grid;
+		gap: $global-module-size / 2;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto rem(40);
+		margin-bottom: $global-module-size;
+
+		span {
+			grid-column: 1 / 3;
+		}
+
+		input,
+		img {
+			height: 100%;
+		}
+	}
+
 	textarea,
 	input:not([type="submit"]),
 	select,

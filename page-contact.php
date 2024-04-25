@@ -22,6 +22,12 @@ get_header();
           <span>Sua Mensagem</span>
           <textarea required cols="40" rows="10" aria-invalid="false" name="Mensagem"></textarea>
         </label>
+        <label class="c-form__label c-form__captcha">
+          <span>Digite os caracteres da imagem abaixo</span>
+          <input required aria-required="true" aria-invalid="false" value="" type="text" name="Captcha">
+          <input type="hidden" name="CaptchaCode" value="1" />
+          <img loading="lazy" width="200" height="50" src="<?= get_template_directory_uri() . '/' . ASSETS_DIR . '/img/captchas/1.png' ?>" alt="">
+        </label>
         <div class="c-form__actions">
           <input class="c-button c-button--outline" type="submit" value="Enviar">
           <?= themeLoadingSpinner() ?>
