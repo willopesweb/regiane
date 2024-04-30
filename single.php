@@ -32,9 +32,32 @@ get_header();
   </section>
   <div class="l-page-single__comments">
     <?php
-    if (comments_open()) {
-      comments_template();
-    }
+    if (comments_open()) { ?>
+      <div class="l-page__content" style="justify-content:center">
+        <form action="" method="post" class="c-form js-form" aria-label="Formulário de comentário" id="comment">
+          <input type="hidden" name="PostId" value="<?= get_the_ID() ?>" />
+          <label class="c-form__label">
+            <span>Nome</span>
+            <input required aria-required="true" aria-invalid="false" value="" type="text" name="Nome"></span>
+          </label>
+          <label class="c-form__label">
+            <span>Comentário</span>
+            <textarea required cols="40" rows="10" aria-invalid="false" name="Comentario"></textarea>
+          </label>
+          <label class="c-form__label c-form__captcha">
+            <span>Digite os caracteres da imagem abaixo</span>
+            <?php $random =  rand(1, 13) ?>
+            <input required aria-required="true" aria-invalid="false" value="" type="text" name="Captcha">
+            <input type="hidden" name="CaptchaCode" value="<?= $random ?>" />
+            <img loading="lazy" width="200" height="50" src="<?= get_template_directory_uri() . '/' . ASSETS_DIR . '/img/captchas/' . $random . '.png' ?>" alt="">
+          </label>
+          <div class="c-form__actions">
+            <input class="c-button c-button--outline" type="submit" value="Enviar">
+            <?= themeLoadingSpinner() ?>
+          </div>
+        </form>
+      </div>
+    <?php }
     ?>
   </div>
 </main>

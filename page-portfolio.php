@@ -93,6 +93,13 @@ get_header();
           <span>Detalhes</span>
           <textarea cols="40" rows="10" aria-invalid="false" name="Detalhes"></textarea>
         </label>
+        <label class="c-form__label c-form__captcha">
+          <span>Digite os caracteres da imagem abaixo</span>
+          <?php $random =  rand(1, 13) ?>
+          <input required aria-required="true" aria-invalid="false" value="" type="text" name="Captcha">
+          <input type="hidden" name="CaptchaCode" value="<?= $random ?>" />
+          <img loading="lazy" width="200" height="50" src="<?= get_template_directory_uri() . '/' . ASSETS_DIR . '/img/captchas/' . $random . '.png' ?>" alt="">
+        </label>
         <div class="c-form__actions">
           <input class="c-button c-button--outline" type="submit" value="Enviar">
           <?= themeLoadingSpinner() ?>

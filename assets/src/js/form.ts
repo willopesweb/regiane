@@ -9,6 +9,14 @@ interface Email {
   captchaCode?: string;
 }
 
+interface Comment {
+  postId: string;
+  comment: string;
+  name: string;
+  captcha?: string;
+  captchaCode?: string;
+}
+
 const forms = document.querySelectorAll(".js-form");
 
 if (forms) {
@@ -28,31 +36,42 @@ async function handleSubmit(this: HTMLElement, e: Event) {
   });
 
   let message = "";
+  let EmailData: Email | Comment;
 
-  for (const key in formDataObject) {
-    if (key !== "Captcha" && key !== "CaptchaCode") {
-      message += `<b>${key}: </b>${formDataObject[key]}<br/>`;
+  if (this.id === "comment") {
+    EmailData = {
+      postId: formDataObject.PostId,
+      name: formDataObject.Nome,
+      comment: formDataObject.Comentario,
+      captcha: formDataObject.Captcha,
+      captchaCode: formDataObject.CaptchaCode,
+    };
+  } else {
+    for (const key in formDataObject) {
+      if (key !== "Captcha" && key !== "CaptchaCode") {
+        message += `<b>${key}: </b>${formDataObject[key]}<br/>`;
+      }
     }
-  }
 
-  const EmailData: Email = {
-    email: formDataObject.Email,
-    message: message,
-    name: formDataObject.Nome,
-    subject:
-      this.id === "revisao"
-        ? "Você recebeu um novo pedido de orçamento!"
-        : `${formDataObject.Nome} enviou uma mensagem pelo site!`,
-    captcha: formDataObject.Captcha,
-    captchaCode: formDataObject.CaptchaCode,
-  };
+    EmailData = {
+      email: formDataObject.Email,
+      message: message,
+      name: formDataObject.Nome,
+      subject:
+        this.id === "revisao"
+          ? "Você recebeu um novo pedido de orçamento!"
+          : `${formDataObject.Nome} enviou uma mensagem pelo site!`,
+      captcha: formDataObject.Captcha,
+      captchaCode: formDataObject.CaptchaCode,
+    };
+  }
 
   console.log(formDataObject);
   console.log(EmailData);
   submitContent(this, EmailData);
 }
 
-async function submitContent(form: HTMLElement, EmailData: Email) {
+async function submitContent(form: HTMLElement, EmailData: Email | Comment) {
   const loading = form.querySelector(".c-loading");
   loading?.classList.add("is-visible");
 
@@ -60,7 +79,7 @@ async function submitContent(form: HTMLElement, EmailData: Email) {
     const result = await sendEmail(EmailData);
     console.log(result);
     if (result.success) {
-      createNotification("E-mail enviado com sucesso!", "success");
+      createNotification(result.message as string, "success");
     } else {
       createNotification(`${result.error}`, "error");
     }
@@ -72,8 +91,8 @@ async function submitContent(form: HTMLElement, EmailData: Email) {
 }
 
 async function sendEmail(
-  formData: Email
-): Promise<{ success: boolean; error?: string }> {
+  formData: Email | Comment
+): Promise<{ success: boolean; error?: string; message?: string }> {
   try {
     const response = await fetch(`${window.location.origin}/wp-send-mail.php`, {
       method: "POST",
@@ -84,7 +103,8 @@ async function sendEmail(
     });
 
     if (response.ok) {
-      return { success: true };
+      const { message } = await response.json();
+      return { success: true, message };
     } else {
       const errorResponse = await response.json();
       return {

@@ -19,10 +19,15 @@ $component-name: c-form;
 
 	&__captcha {
 		display: grid;
-		gap: $global-module-size / 2;
+		gap: 0 $global-module-size / 2;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto rem(40);
 		margin-bottom: $global-module-size;
+		max-width: rem(600);
+
+		@include breakpoint(600) {
+			grid-template-columns: 60% 40%;
+		}
 
 		span {
 			grid-column: 1 / 3;
