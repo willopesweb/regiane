@@ -13,6 +13,8 @@ interface Comment {
   postId: string;
   comment: string;
   name: string;
+  userId: string;
+  parent?: string;
   captcha?: string;
   captchaCode?: string;
 }
@@ -36,13 +38,15 @@ async function handleSubmit(this: HTMLElement, e: Event) {
   });
 
   let message = "";
-  let EmailData: Email | Comment;
+  let DataToSend: Email | Comment;
 
   if (this.id === "comment") {
-    EmailData = {
+    DataToSend = {
       postId: formDataObject.PostId,
       name: formDataObject.Nome,
       comment: formDataObject.Comentario,
+      userId: formDataObject.UserId,
+      parent: formDataObject.ParentId,
       captcha: formDataObject.Captcha,
       captchaCode: formDataObject.CaptchaCode,
     };
@@ -53,7 +57,7 @@ async function handleSubmit(this: HTMLElement, e: Event) {
       }
     }
 
-    EmailData = {
+    DataToSend = {
       email: formDataObject.Email,
       message: message,
       name: formDataObject.Nome,
@@ -67,8 +71,8 @@ async function handleSubmit(this: HTMLElement, e: Event) {
   }
 
   console.log(formDataObject);
-  console.log(EmailData);
-  submitContent(this, EmailData);
+  console.log(DataToSend);
+  submitContent(this, DataToSend);
 }
 
 async function submitContent(form: HTMLElement, EmailData: Email | Comment) {
@@ -80,6 +84,18 @@ async function submitContent(form: HTMLElement, EmailData: Email | Comment) {
     console.log(result);
     if (result.success) {
       createNotification(result.message as string, "success");
+      console.log(result.reload);
+      if (result.reload) {
+        setTimeout(() => {
+          let url = window.location.href;
+          if (url.endsWith("/")) url = url.slice(0, -1);
+          window.location.href = `${
+            window.location.href.split("#")[0]
+          }#commentList`;
+          window.location.reload();
+        }, 1000);
+      }
+      //";
     } else {
       createNotification(`${result.error}`, "error");
     }
@@ -90,9 +106,12 @@ async function submitContent(form: HTMLElement, EmailData: Email | Comment) {
   loading?.classList.remove("is-visible");
 }
 
-async function sendEmail(
-  formData: Email | Comment
-): Promise<{ success: boolean; error?: string; message?: string }> {
+async function sendEmail(formData: Email | Comment): Promise<{
+  success: boolean;
+  error?: string;
+  message?: string;
+  reload?: boolean | undefined;
+}> {
   try {
     const response = await fetch(`${window.location.origin}/wp-send-mail.php`, {
       method: "POST",
@@ -103,8 +122,8 @@ async function sendEmail(
     });
 
     if (response.ok) {
-      const { message } = await response.json();
-      return { success: true, message };
+      const { message, reload } = await response.json();
+      return { success: true, message, reload };
     } else {
       const errorResponse = await response.json();
       return {

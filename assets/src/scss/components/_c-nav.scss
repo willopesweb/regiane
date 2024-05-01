@@ -34,7 +34,7 @@ $screen-height: 560px;
 		outline: 0;
 		padding: 0;
 		position: absolute;
-		transition: background-color 0.15s linear;
+		transition: background-color var(--theme-default-transition);
 		z-index: 10;
 
 		&:hover,
@@ -165,7 +165,7 @@ $screen-height: 560px;
 			&:focus {
 				background-color: rgba(0, 0, 0, 0.2);
 				outline: 0;
-				transition: 0.15s linear;
+				transition: var(--theme-default-transition);
 			}
 		}
 
@@ -240,7 +240,7 @@ $screen-height: 560px;
 				& a {
 					color: var(--main-text-color);
 					padding: rem(10) rem(20);
-					transition: 0.15s linear;
+					transition: var(--theme-default-transition);
 
 					&:hover,
 					&:focus {

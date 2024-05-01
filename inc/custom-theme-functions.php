@@ -36,3 +36,23 @@ function theme_custom_pagination($query = null)
     'add_fragment' => '',
   ));
 }
+
+//Comentário
+function theme_custom_comment($id, $avatar, $date, $author, $content, $parent = true)
+{
+  echo '<div class="l-comments__card ' . (($parent === true) ? 'parent' : '') . '" id="comment-' . $id  . '">';
+  echo '<div class="l-comments__avatar">' . $avatar  . '</div>';
+  echo '<div class="l-comments__card-main">';
+  echo '<div class="l-comments__card-header">';
+  echo '<span class="l-comments__card-date">' . $date  . '</span>';
+  echo '<span class="l-comments__card-author"><cite>' . $author  . '</cite> disse:</span>';
+  echo '</div>';
+  echo '<div class="l-comments__card-content">';
+  echo '<p>' . $content  . '</p>';
+  if ($parent === true) {
+    echo '<a href="#comment" data-id="' . $id  . '" class="c-button--outline js-reply-comment">Responder</a>';
+  }
+  echo '</div>';
+  echo '</div>';
+  echo '</div>';
+}

@@ -14,7 +14,7 @@ $button-font-family: $font-family-1;
 	cursor: pointer;
 	font-family: $button-font-family, sans-serif;
 	font-weight: 500;
-	transition: 0.15s linear;
+	transition: var(--theme-default-transition);
 	width: fit-content;
 
 	&:focus,
@@ -23,6 +23,7 @@ $button-font-family: $font-family-1;
 		border-radius: 0;
 		box-shadow: none;
 		outline: 1px solid darken($theme-color-4, 15%);
+		width: fit-content;
 	}
 }
 
@@ -31,6 +32,8 @@ $button-font-family: $font-family-1;
 	border: 1px solid var(--button-outline-color);
 	color: var(--button-text-color);
 	padding: rem(7) rem(14);
+	transition: var(--theme-default-transition);
+	width: fit-content;
 
 	&:hover,
 	&:focus,

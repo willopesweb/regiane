@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 img.lazy {
 	display: flex;
 	position: relative;
@@ -19,6 +23,7 @@ img.lazy {
 	0% {
 		background-position: 0% 50%;
 	}
+
 	100% {
 		background-position: 100% 50%;
 	}

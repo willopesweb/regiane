@@ -14,13 +14,15 @@ $component-name: c-pagination;
 		border-color: var(--pagination-color);
 		color: var(--pagination-color);
 		padding: rem(7) rem(14);
-		transition: 0.15s linear;
+		transition: var(--theme-default-transition);
+
 		&:not(.current):hover,
 		&:not(.current):focus,
 		&:not(.current):active {
 			border: 1px solid darken($theme-color-1, 10%);
 			color: darken($theme-color-1, 10%);
 			outline: none;
+
 			&::before,
 			&::after {
 				border-color: darken($theme-color-1, 10%);
@@ -38,6 +40,7 @@ $component-name: c-pagination;
 			align-items: center;
 			display: flex;
 			justify-self: flex-start;
+
 			&::after,
 			&::before {
 				border-color: var(--pagination-color);
@@ -46,7 +49,7 @@ $component-name: c-pagination;
 				border-width: 0 1px 1px 0;
 				display: inline-flex;
 				height: rem(10);
-				transition: 0.15s linear;
+				transition: var(--theme-default-transition);
 				width: rem(10);
 			}
 		}

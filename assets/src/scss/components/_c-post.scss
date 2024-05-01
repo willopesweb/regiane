@@ -19,6 +19,7 @@ $layout-name: c-post;
 		flex-direction: center;
 		height: rem(400);
 		width: 100%;
+
 		img {
 			height: 100%;
 			object-fit: cover;
@@ -38,8 +39,9 @@ $layout-name: c-post;
 		left: 0;
 		margin: rem(-75) auto 0 auto;
 		padding: 0 rem(10);
-		transition: 0.15s linear;
+		transition: var(--theme-default-transition);
 		width: 90%;
+
 		&:hover {
 			border-color: darken($theme-color-1, 10%);
 			color: darken($theme-color-1, 10%);

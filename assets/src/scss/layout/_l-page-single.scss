@@ -96,7 +96,7 @@ $layout-name: l-page-single;
 
 		a:not(.c-button):not(.page-numbers):not([class^="icon"]) {
 			color: var(--theme-color-6);
-			transition: 0.15s linear;
+			transition: var(--theme-default-transition);
 
 			&:hover {
 				text-decoration: underline;
@@ -228,10 +228,8 @@ $layout-name: l-page-single;
 
 		&__image {
 			border-radius: 50%;
-			flex-basis: rem(100);
 			height: rem(80);
 			margin: 0 $global-module-size 0 0;
-			object-fit: cover;
 			padding: 0;
 			width: rem(80);
 		}
@@ -298,6 +296,7 @@ $layout-name: l-page-single;
 
 		@include breakpoint(1200) {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
+
 			article {
 				max-height: rem(500);
 			}
@@ -307,6 +306,7 @@ $layout-name: l-page-single;
 			align-items: center;
 			display: flex;
 			justify-content: center;
+
 			img {
 				height: 100%;
 				object-fit: cover;
