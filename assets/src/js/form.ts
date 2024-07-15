@@ -81,21 +81,20 @@ async function submitContent(form: HTMLElement, EmailData: Email | Comment) {
 
   try {
     const result = await sendEmail(EmailData);
-    console.log(result);
+    //console.log(result);
     if (result.success) {
       createNotification(result.message as string, "success");
-      console.log(result.reload);
       if (result.reload) {
         setTimeout(() => {
           let url = window.location.href;
-          if (url.endsWith("/")) url = url.slice(0, -1);
-          window.location.href = `${
-            window.location.href.split("#")[0]
-          }#commentList`;
+          if (form.id === "commentsList") {
+            if (url.endsWith("/")) url = url.slice(0, -1);
+            window.location.href = `${window.location.href.split("#")[0]
+              }#commentList`;
+          }
           window.location.reload();
-        }, 1000);
+        }, 2000);
       }
-      //";
     } else {
       createNotification(`${result.error}`, "error");
     }

@@ -8,38 +8,35 @@ get_header();
     <section class="c-carousel splide js-main-carousel" aria-label="Meus Livros">
       <div class="splide__track">
         <ul class="splide__list">
-          <?php {
-            global $query_string;
-            parse_str($query_string, $my_query_array);
-
-            $args = array(
-              'post_type' => 'livro',
-              'post_status' => 'publish',
-              'order' => 'ASC',
-              'orderby' => 'post-date'
-            );
-            $query = new WP_Query($args);
-            if ($query->have_posts()) {
-              while ($query->have_posts()) {
-                $query->the_post();
-                $book = array(
-                  'titulo' => get_the_title(),
-                  'capa' => get_field("capa"),
-                  'link' => get_field("link")
-                );
-                echo '<li class="splide__slide c-carousel__item">';
-                echo '<a title="' . $book["titulo"] . '" target="_blank" href="' . $book["link"] . '">';
-                echo '<img alt="' . $book["titulo"] . '" title="' . $book["titulo"] . '" width="270" height="400" class="l-book__image" src="' . $book["capa"] . '">';
-                echo '</a></li>';
-              }
+          <?php
+          $args = array(
+            'post_type' => 'livro',
+            'post_status' => 'publish',
+            'order' => 'DESC',
+            'orderby' => 'post-date',
+            'posts_per_page' => -1
+          );
+          $query = new WP_Query($args);
+          if ($query->have_posts()) {
+            while ($query->have_posts()) {
+              $query->the_post();
+              $book = array(
+                'titulo' => get_the_title(),
+                'capa' => get_field("capa"),
+                'link' => get_field("link")
+              );
+              echo '<li class="splide__slide c-carousel__item">';
+              echo '<a title="' . esc_attr($book["titulo"]) . '" target="_blank" href="' . esc_url($book["link"]) . '">';
+              echo '<img alt="' . esc_attr($book["titulo"]) . '" title="' . esc_attr($book["titulo"]) . '" width="270" height="400" class="l-book__image" src="' . esc_url($book["capa"]) . '">';
+              echo '</a></li>';
             }
           }
-
-
+          wp_reset_postdata();
           ?>
         </ul>
       </div>
     </section>
+
   </div>
   <div class="l-page-home__content">
     <section class="l-page-home__posts">
