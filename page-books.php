@@ -18,7 +18,7 @@ get_header();
         'posts_per_page' => 5,
         'paged' => $paged,
         'order' => 'DESC',
-        'orderby' => 'post-date'
+        'orderby' => 'date'
       );
       $query = new WP_Query($args);
       if ($query->have_posts()) {
