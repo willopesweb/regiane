@@ -1,6 +1,6 @@
 <?php
 
-function themeLoadingSpinner()
+function theme_custom_loading()
 {
   echo '<div class="c-loading">';
   echo '<figure class="page"></figure>';

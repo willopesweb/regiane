@@ -102,7 +102,7 @@ get_header();
         </label>
         <div class="c-form__actions">
           <input class="c-button c-button--outline" type="submit" value="Enviar">
-          <?= themeLoadingSpinner() ?>
+          <?= theme_custom_loading() ?>
         </div>
       </form>
     </div>
