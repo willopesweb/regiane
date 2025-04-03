@@ -15,7 +15,6 @@ get_header();
       <h1 class="l-page-single__share__title">Compartilhe essa postagem</h1>
       <ul class="c-social">
         <li><a target='_blank' class='icon-whatsapp' href="https://api.whatsapp.com/send?text=<?= get_permalink() ?>"></a></li>
-        <li><a target='_blank' class='icon-twitter' href="https://twitter.com/intent/tweet?text=<?= get_permalink() ?>"></a></li>
         <li><a target='_blank' class='icon-facebook' href="https://www.facebook.com/sharer/sharer.php?u=<?= get_permalink() ?>"></a></li>
       </ul>
     </article>
