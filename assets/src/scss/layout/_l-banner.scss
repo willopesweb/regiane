@@ -30,7 +30,7 @@ $layout-name: l-banner;
 	&__title {
 		color: #fff;
 		font-size: rem(18);
-		font-weight: bold;
+		font-weight: 700;
 		@include breakpoint(600) {
 			font-size: rem(24);
 		}
@@ -42,7 +42,7 @@ $layout-name: l-banner;
 	&__quote {
 		color: #fff;
 		font-size: rem(14);
-		font-weight: normal;
+		font-weight: 400;
 		padding-left: rem(10);
 		@include breakpoint(600) {
 			font-size: rem(20);

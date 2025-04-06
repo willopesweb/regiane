@@ -62,7 +62,7 @@ $layout-name: c-post;
 	&__quote {
 		color: #fff;
 		font-size: rem(14);
-		font-weight: normal;
+		font-weight: 400;
 		padding-left: rem(10);
 
 		@include breakpoint(600) {

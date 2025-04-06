@@ -18,7 +18,7 @@ $component-name: c-card;
 
 	&__title {
 		font-size: rem(25);
-		font-weight: bold;
+		font-weight: 700;
 		margin-bottom: $global-module-size / 2;
 	}
 
@@ -33,7 +33,7 @@ $component-name: c-card;
 		color: var(--theme-color-1);
 		display: block;
 		font-size: rem(14);
-		font-weight: bold;
+		font-weight: 700;
 		transition: 300ms ease all;
 
 		&:hover {
