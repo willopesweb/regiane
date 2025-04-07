@@ -126,6 +126,14 @@ $layout-name: l-page-single;
 				aspect-ratio: 16 / 9;
 				max-width: rem(900);
 				width: 100%;
+
+				iframe {
+					aspect-ratio: 16 / 9;
+					width: 100%;
+					height: 100%;
+				}
+
+
 			}
 
 			figcaption {
