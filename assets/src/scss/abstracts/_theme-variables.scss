@@ -17,6 +17,12 @@
 	--theme-default-transition: 0.15s linear;
 	--body-background-color: --theme-color-3;
 	--logo-color: --theme-color-2;
+
+	--global-max-width: 1200px;
+	--global-module-size: 20px;
+	--global-font-size: 1.125rem;
+	--global-line-height: 1.5;
+	--global-radius: 0.9375rem;
 }
 
 $theme-color-1: #efc7ad;
