@@ -2,9 +2,10 @@ $layout-name: l-sidebar;
 
 .#{$layout-name} {
 	margin-top: $global-module-size * 2;
+	--sidebar-border-color: var(--main-text-color);
 
 	@include breakpoint(800) {
-		border-left: 2px solid var(--theme-color-2);
+		border-left: 2px solid var(--sidebar-border-color);
 		padding-left: $global-module-size;
 		padding-right: $global-module-size;
 	}
@@ -17,7 +18,7 @@ $layout-name: l-sidebar;
 	}
 
 	&__book {
-		border-bottom: 2px solid var(--theme-color-2);
+		border-bottom: 2px solid var(--sidebar-border-color);
 		padding: $global-module-size * 2 0;
 	}
 
@@ -37,9 +38,11 @@ $layout-name: l-sidebar;
 
 	&__biography {
 		max-width: rem(500);
+
 		& p {
 			font-size: rem(14);
 			line-height: rem(22);
+
 			&:not(:last-child) {
 				text-indent: rem(20);
 			}

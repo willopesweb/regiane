@@ -2,7 +2,7 @@ $component-name: c-button;
 
 $button-font-family: $font-family-1;
 
-:root {
+body {
 	--button-outline-color: var(--text-color-1);
 	--button-text-color: var(--text-color-1);
 	--button-background-color: var(--text-color-1);

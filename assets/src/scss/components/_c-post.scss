@@ -2,7 +2,6 @@ $layout-name: c-post;
 
 .#{$layout-name} {
 	align-items: center;
-
 	display: flex;
 	flex-direction: column;
 	text-align: center;
@@ -30,9 +29,9 @@ $layout-name: c-post;
 
 	&__header {
 		align-items: center;
-		background-color: #fff;
-		border: 1px solid var(--text-color-1);
-		color: var(--text-color-1);
+		background-color: var(--body-background-color);
+		border: 1px solid var(--main-text-color);
+		color: var(--main-text-color);
 		display: flex;
 		height: rem(150);
 		justify-content: center;

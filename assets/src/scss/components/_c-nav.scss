@@ -10,10 +10,12 @@ $screen-height: 560px;
 	@return 2 * $pi * $r;
 }
 
-.#{$component-name} {
+body {
 	--menu-item-color: var(--main-text-color);
 	--desktop-menu-item-hover: var(--theme-color-1);
+}
 
+.#{$component-name} {
 	& .menu-item a {
 		color: var(--menu-item-color);
 		font-size: rem(18);
@@ -226,9 +228,8 @@ $screen-height: 560px;
 
 		&__menu {
 			align-items: center;
-			border-bottom: 2px solid;
-			border-color: var(--menu-item-color);
-			border-top: 2px solid;
+			border-bottom: 2px solid var(--menu-item-color);
+			border-top: 2px solid var(--menu-item-color);
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;

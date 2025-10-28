@@ -2,7 +2,7 @@ $component-name: c-instagram;
 
 .#{$component-name} {
 	align-items: center;
-	border-top: 2px solid var(--theme-color-2);
+	border-top: 2px solid var(--sidebar-border-color);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
