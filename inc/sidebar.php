@@ -26,14 +26,14 @@
       'capa' => get_field("capa", $query->posts[0]->ID),
       'link' => $query->posts[0]->post_name
     );
-    ?>
+  ?>
     <section class="l-sidebar__book">
       <h2 class="l-sidebar__title">Confira meu último lançamento</h2>
       <a href="<?= $book['link'] ?>" title="<?= $book['titulo'] ?>">
         <img class="l-sidebar__cover lazy" height="400" width="200" data-src="<?= $book['capa'] ?>" alt="<?= $book['titulo'] ?>">
       </a>
     </section>
-    <?php
+  <?php
   } ?>
 
   <section class="l-sidebar__about">
@@ -49,7 +49,7 @@
     <p class='c-instagram__name icon-instagram'>@regianecassiadasilva</p>
     <div class="c-instagram__feed">
       <?= do_shortcode('[instagram-feed showbutton=false showfollow=false showheader=false followtext="Me Siga no Instagram"]'); ?>
-      <a href="https://www.instagram.com/regianecassiadasilva/" class="c-button c-button--outline">Me Siga no Instagram</a>
+      <a href="https://www.instagram.com/regianecassiadasilva/" class="c-button c-button--outline" style="margin-top:10px">Me Siga no Instagram</a>
     </div>
 
   </section>

@@ -43,8 +43,8 @@ $layout-name: c-post;
 		width: 90%;
 
 		&:hover {
-			border-color: darken($theme-color-1, 10%);
-			color: darken($theme-color-1, 10%);
+			border-color: $theme-color-5;
+			color: $theme-color-5;
 		}
 	}
 
@@ -53,10 +53,6 @@ $layout-name: c-post;
 		font-size: rem(24);
 		font-weight: 500;
 		z-index: 1;
-
-		@include breakpoint(801) {
-			font-size: rem(30);
-		}
 	}
 
 	&__quote {

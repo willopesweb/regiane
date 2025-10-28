@@ -22,7 +22,7 @@ $button-font-family: $font-family-1;
 		border: none;
 		border-radius: 0;
 		box-shadow: none;
-		outline: 1px solid darken($theme-color-4, 15%);
+		outline: 1px solid $theme-color-5;
 		width: fit-content;
 	}
 }
@@ -38,8 +38,8 @@ $button-font-family: $font-family-1;
 	&:hover,
 	&:focus,
 	&:active {
-		border: 1px solid darken($theme-color-1, 10%);
-		color: darken($theme-color-1, 10%);
+		border: 1px solid $theme-color-5;
+		color: $theme-color-5;
 		outline: none;
 	}
 }
