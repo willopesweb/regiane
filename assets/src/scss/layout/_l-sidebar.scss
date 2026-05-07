@@ -67,13 +67,10 @@ $layout-name: l-sidebar;
 	&__youtube {
 		border-top: 2px solid var(--sidebar-border-color);
 		display: flex;
+		align-items: center;
+		justify-content: center;
 		flex-direction: column;
 		padding: $global-module-size * 2 0;
-
-		&__name {
-			margin-left: rem(12);
-			margin-top: $global-module-size;
-		}
 
 		&__player {
 			aspect-ratio: 16 / 9;

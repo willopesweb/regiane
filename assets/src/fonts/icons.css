@@ -82,3 +82,9 @@
 }
 
 /* '' */
+
+.icon-youtube:before {
+    content: "\f16a";
+}
+
+/* '' */

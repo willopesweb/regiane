@@ -8,17 +8,6 @@ $component-name: c-instagram;
 	justify-content: center;
 	padding: $global-module-size * 2 0;
 
-	&__name {
-		align-items: center;
-		align-self: flex-start;
-		display: flex;
-		font-size: rem(14);
-
-		&::before {
-			font-size: rem(25);
-		}
-	}
-
 	&__feed {
 		align-items: center;
 		display: flex;
