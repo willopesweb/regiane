@@ -233,6 +233,7 @@ $layout-name: l-page-single;
 			margin: 0 var(--global-module-size) 0 0;
 			padding: 0;
 			width: rem(80);
+			object-fit: cover;
 		}
 	}
 
