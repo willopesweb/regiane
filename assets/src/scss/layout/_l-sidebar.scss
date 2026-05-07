@@ -23,10 +23,12 @@ $layout-name: l-sidebar;
 	}
 
 	&__cover {
+		background-color: var(--theme-color-4);
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: $global-module-size;
+		min-height: rem(200);
 	}
 
 	&__about {
@@ -60,6 +62,30 @@ $layout-name: l-sidebar;
 	.c-instagram__name {
 		margin-left: rem(12);
 		margin-top: $global-module-size;
+	}
+
+	&__youtube {
+		border-top: 2px solid var(--sidebar-border-color);
+		display: flex;
+		flex-direction: column;
+		padding: $global-module-size * 2 0;
+
+		&__name {
+			margin-left: rem(12);
+			margin-top: $global-module-size;
+		}
+
+		&__player {
+			aspect-ratio: 16 / 9;
+			margin-top: $global-module-size;
+			width: 100%;
+
+			iframe {
+				border: 0;
+				height: 100%;
+				width: 100%;
+			}
+		}
 	}
 
 	& .c-newsletter {

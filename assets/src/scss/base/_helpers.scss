@@ -3,30 +3,12 @@ html {
 }
 
 img.lazy {
-	display: flex;
-	position: relative;
-
-	&::before {
-		animation: placeholder 2s forwards linear infinite;
-		background: linear-gradient(90deg, #eee 8%, #ccc 18%, #eee 33%);
-		background-size: 400% 400%;
-		content: "";
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-	}
+	opacity: 0;
+	transition: opacity 0.4s ease;
 }
 
-@keyframes placeholder {
-	0% {
-		background-position: 0% 50%;
-	}
-
-	100% {
-		background-position: 100% 50%;
-	}
+img.is-loaded {
+	opacity: 1;
 }
 
 /** Hidden text of a element.

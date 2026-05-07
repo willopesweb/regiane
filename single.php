@@ -29,6 +29,9 @@ get_header();
       </div>
     </article>
   </section>
+  <section class="l-page-single__content">
+    <?php require 'inc/related-posts.php'; ?>
+  </section>
   <div class="l-page-single__comments">
     <?php
     if (comments_open()) { ?>

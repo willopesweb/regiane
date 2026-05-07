@@ -9,10 +9,7 @@ $layout-name: c-post;
 
 	&__image {
 		align-items: center;
-
-		/* background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;*/
+		background-color: var(--theme-color-4);
 		box-shadow: 3px 0 6px rgba(0, 0, 0, 0.15);
 		display: flex;
 		flex-direction: center;

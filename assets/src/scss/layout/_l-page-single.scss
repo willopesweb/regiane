@@ -281,6 +281,31 @@ $layout-name: l-page-single;
 		}
 	}
 
+	&__related-posts {
+		flex-basis: 100%;
+		margin: rem(40) 0 rem(80) 0;
+
+		&__title {
+			font-size: rem(22);
+			font-weight: 500;
+			margin-bottom: var(--global-module-size);
+		}
+
+		&__grid {
+			display: grid;
+			gap: var(--global-module-size);
+			grid-template-columns: 1fr;
+
+			@include breakpoint(600) {
+				grid-template-columns: 1fr 1fr;
+			}
+
+			@include breakpoint(900) {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+	}
+
 	&__portfolio {
 		display: grid;
 		gap: var(--global-module-size);

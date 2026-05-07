@@ -55,6 +55,25 @@
   </section>
 
   <?php
+  $youtube_video_id = theme_get_youtube_latest_video();
+  if ($youtube_video_id) : ?>
+  <section class="l-sidebar__youtube">
+    <h2 class="l-sidebar__title">YouTube</h2>
+    <p class="l-sidebar__youtube__name icon-youtube">@regianecassiadasilva</p>
+    <div class="l-sidebar__youtube__player">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/<?= esc_attr($youtube_video_id) ?>?rel=0"
+        title="Último vídeo do canal Regiane Silva"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <a href="https://www.youtube.com/@regianecassiadasilva" target="_blank" rel="noopener noreferrer" class="c-button c-button--outline" style="margin-top:10px">Me Siga no YouTube</a>
+  </section>
+  <?php endif; ?>
+
+  <?php
   /*    <section class="c-newsletter">
   <div class="c-newsletter__content">
   <h2 class="l-sidebar__title">Seja o primeiro a receber as novidades</h2>
