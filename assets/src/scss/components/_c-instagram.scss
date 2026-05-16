@@ -6,7 +6,7 @@ $component-name: c-instagram;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: $global-module-size * 2 0;
+	padding: $global-module-size 0;
 
 	&__feed {
 		align-items: center;

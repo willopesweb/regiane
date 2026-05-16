@@ -70,7 +70,7 @@ $layout-name: l-sidebar;
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-		padding: $global-module-size * 2 0;
+		padding: $global-module-size 0;
 
 		&__player {
 			aspect-ratio: 16 / 9;
